@@ -1,0 +1,406 @@
+<app-navbar></app-navbar>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div *ngIf="visualizacao()" class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="col-md-14">
+                <button type="button" openCreate (click)="openCreate()" id="create" class="btn btn-block btn-primary">Nova Região</button>
+            </div>
+            <div class="col-md-14">
+                <button type="button" openCreate (click)="publicaRegioes()" id="create" class="btn btn-block btn-info">Publicar Regiões</button>
+            </div>
+            <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                <strong>Regiões Publicadas com sucesso</strong>.
+            </div>
+            <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                <strong>Regiões Publicadas com falha</strong>.
+            </div>
+            <div class="inner-addon right-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input class="form-control" type="text" name="search" id="inputSearch" placeholder="Busque pelo nome" [(ngModel)]="nome">
+            </div>
+            <div class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Região</th>
+                            <th class="cell100 column2">Descrição</th>
+                            <th class="cell100 column3">Produto</th>
+                            <th class="cell100 column3">Status</th>
+                            <th class="cell100 column3">Criação</th>
+                            <th class="cell100 column3">Publicar</th>
+                            <th class="cell100 column4">Ações</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                        <tr *ngFor="let regiao of regioes| filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
+                            <td class="cell100 column1">{{regiao.nome}}</td>
+                            <td class="cell100 column2">{{regiao.descricao}}</td>
+                            <td class="cell100 column3">{{regiao.nomeProduto}}</td>
+                            <td class="cell100 column3">{{regiao.status}}</td>
+                            <td class="cell100 column3">{{regiao.createdAt}}</td>
+                            <td class="cell100 column3"><input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="regiao.publicar" (click)="checkRegioes(regioes, regiao.id)"></td>
+                            <td class="cell100 column4"><a (click)="openEditar(regiao)">Editar</a>   |   <a (click)="openDelete(regiao)">Excluir</a></td>
+                        </tr>
+                        </tbody>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </table>
+                    <ng-template  #content  let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Descrição Erro</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span id="closeModal" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{msgDelete}}</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="updateRegiao()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Regiões</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="updateClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Produtos</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='regiaoSelecionado.tipoProdutoId' name="produtoId" (ngModelChange)='onProdutoSelected($event)'>
+                                <option class='option' *ngFor='let produto of produtos' [value]="produto.id">{{produto.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Nome Região</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="regiaoSelecionado.nome" name="familyName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Descrição</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="regiaoSelecionado.descricao" name="text" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Agrupamento</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" (click)="dddCheck()" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Ddd
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" (click)="ufCheck()" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Uf
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" (click)="regiaoMacroCheck()" id="exampleRadios3" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Região Macro
+                        </label>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+
+                    <div *ngIf="dddShown()">
+                        <div>
+                            <p class="lead">Ddd</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectDdd"
+                                               [data]="listDdds"
+                                               [(ngModel)]="valueDdds"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <div *ngIf="ufShown()">
+                        <div>
+                            <p class="lead">Uf</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
+                                    <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <br>
+                        <div>
+                            <p class="lead">Cidades</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectUf"
+                                               [data]="listCidades"
+                                               [(ngModel)]="valueCidades"
+                                               [textField]="'nome'"
+                                               [valueField]="'id'"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <div *ngIf="regiaoMacroShown()">
+                        <div>
+                            <p class="lead">Região Macro</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectRegiao"
+                                               [data]="listRegiaoMacro"
+                                               [(ngModel)]="value"
+                                               [textField]="'text'"
+                                               [valueField]="'value'"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="updateRegiaoAcao(regiaoSelecionado)" id="btUsuario" type="button" class="btn btn-block btn-primary">Atualizar Região</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{regiaoSelecionado.nome}}</strong> atualizado com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{regiaoSelecionado.nome}}</strong> atualizado com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="createRegiao()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Regiões</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="createClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Produtos</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='regiaoSelecionado.tipoProdutoId' name="produtoId" (ngModelChange)='onProdutoSelected($event)'>
+                                <option class='option' *ngFor='let produto of produtos' [value]="produto.id">{{produto.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Nome Região</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="regiaoSelecionado.nome" name="familyName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Descrição</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="regiaoSelecionado.descricao" name="text" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Agrupamento</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" (click)="dddCheck()" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Ddd
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" (click)="ufCheck()" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Uf
+                        </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" (click)="regiaoMacroCheck()" id="exampleRadios3" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Região Macro
+                    </label>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+
+                    <div *ngIf="dddShown()">
+                        <div>
+                            <p class="lead">Ddd</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectDdd"
+                                    [data]="listDdds"
+                                    [(ngModel)]="valueDdds"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <div *ngIf="ufShown()">
+                        <div>
+                            <p class="lead">Uf</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
+                                    <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <br>
+                        <div>
+                            <p class="lead">Cidades</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectUf"
+                                               [data]="listCidades"
+                                               [(ngModel)]="valueCidades"
+                                               [textField]="'nome'"
+                                               [valueField]="'id'"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <div *ngIf="regiaoMacroShown()">
+                        <div>
+                            <p class="lead">Região Macro</p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="example-wrapper">
+                            <kendo-multiselect name="multiSelectRegiao"
+                                               [data]="listRegiaoMacro"
+                                               [(ngModel)]="value"
+                                               [textField]="'text'"
+                                               [valueField]="'value'"
+                            ></kendo-multiselect>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="createRegiaoAcao(regiaoSelecionado)" id="btUsuario" type="button" class="btn btn-block btn-primary">Criar Região</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{regiaoSelecionado.nome}}</strong> criado com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{regiaoSelecionado.nome}}</strong> criado com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="deleteRegiao()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <form>
+                        <div>
+                            <p class="lead">Deseja excluir a região <strong>{{regiaoSelecionado.nome}}</strong> ? </p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="col-md-14">
+                            <button (click)="deleteRegiaoAcao(regiaoSelecionado)" id="btDeleteConfirm" type="button" class="btn btn-block btn-primary">Ok</button>
+                        </div>
+                        <br>
+                        <div class="col-md-14">
+                            <button (click)="deleteClose()" id="btDeleteCancel" type="button" class="btn btn-block btn-primary">Cancelar</button>
+                        </div>
+                        <br>
+                        <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                            <strong>{{regiaoSelecionado.nome}}</strong> delete com falha.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

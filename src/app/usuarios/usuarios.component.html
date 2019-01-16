@@ -1,0 +1,223 @@
+<app-navbar></app-navbar>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div *ngIf="visualizacao()" class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="col-md-14">
+                <button type="button" openCreate (click)="openCreate()" id="create" class="btn btn-block btn-primary">Novo Usuário</button>
+            </div>
+            <div class="inner-addon right-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input class="form-control" type="text" name="search" id="inputSearch" placeholder="Busque pelo nome" [(ngModel)]="nome">
+            </div>
+            <div *ngIf="visualizacao()" class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Usuário</th>
+                            <th class="cell100 column2">Email</th>
+                            <th class="cell100 column3">Criação</th>
+                            <th class="cell100 column4">Ações</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                        <tr *ngFor="let usuario of usuarios| filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
+                            <td class="cell100 column1">{{usuario.nome}}</td>
+                            <td class="cell100 column2">{{usuario.email}}</td>
+                            <td class="cell100 column3">{{usuario.createdAt}}</td>
+                            <td class="cell100 column4"><a (click)="openEditar(usuario)">Editar</a>   |   <a (click)="openDelete(usuario)">Excluir</a></td>
+                        </tr>
+                        </tbody>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </table>
+                    <ng-template  #content  let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Descrição Erro</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span id="closeModal" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{msgDelete}}</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="updateUsuario()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Usuários</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="updateClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Nome</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.nome" name="givenName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Email</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.email" name="familyName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Senha</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.password" name="email" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="updateUsuarioAcao(usuarioSelecionado)" id="btUsuario" type="button" class="btn btn-block btn-primary">Atualizar Usuário</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{usuarioSelecionado.nome}}</strong> atualizado com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{usuarioSelecionado.nome}}</strong> atualizado com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div *ngIf="createUsuario()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Usuários</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="createClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Nome</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.nome" name="givenName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Email</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.email" name="familyName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Senha</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="usuarioSelecionado.password" name="email" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="createUsuarioAcao(usuarioSelecionado)" id="btUsuario" type="button" class="btn btn-block btn-primary">Criar Usuário</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{usuarioSelecionado.nome}}</strong> criado com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{usuarioSelecionado.nome}}</strong> criado com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="deleteUsuario()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <form>
+                        <div>
+                            <p class="lead">Deseja excluir o usuário <strong>{{usuarioSelecionado.nome}}</strong> ? </p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="col-md-14">
+                            <button (click)="deleteUsuarioAcao(usuarioSelecionado)" id="btDeleteConfirm" type="button" class="btn btn-block btn-primary">Ok</button>
+                        </div>
+                        <br>
+                        <div class="col-md-14">
+                            <button (click)="deleteClose()" id="btDeleteCancel" type="button" class="btn btn-block btn-primary">Cancelar</button>
+                        </div>
+                        <br>
+                        <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                            <strong>{{usuarioSelecionado.nome}}</strong> deletado com falha.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

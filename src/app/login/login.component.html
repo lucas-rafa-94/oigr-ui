@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="account-wall">
+            <img class="profile-img" src="https://logodownload.org/wp-content/uploads/2014/02/oi-logo-c6.png" alt="">
+              <form class="form-signin">
+                <input [(ngModel)]="login.email" name="email" type="text" class="form-control" placeholder="Email" required autofocus>
+                <input [(ngModel)]="login.senha" name="senha" type="password" class="form-control" placeholder="Password" required>
+                <button (click)="postToken()" class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{{name}}</button>
+                <div *ngIf="getLoginOn()" id="erroLoginAlert" class="alert alert-danger alert-dismissible" role="alert">
+                  <strong>ERRO!</strong> Login ou senha inválidos.
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>

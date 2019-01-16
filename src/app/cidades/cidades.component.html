@@ -1,0 +1,217 @@
+<app-navbar></app-navbar>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div *ngIf="visualizacao()" class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="col-md-14">
+                <button type="button" openCreate (click)="openCreate()" id="create" class="btn btn-block btn-primary">Nova Cidade</button>
+            </div>
+            <div class="inner-addon right-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input class="form-control" type="text" name="search" id="inputSearch" placeholder="Busque pelo nome" [(ngModel)]="nome">
+            </div>
+            <div *ngIf="visualizacao()" class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Cidade</th>
+                            <th class="cell100 column2">Estado</th>
+                            <th class="cell100 column3">Criação</th>
+                            <th class="cell100 column4">Ações</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                        <tr *ngFor="let cidade of cidades | filter:nome | paginate: { itemsPerPage: 5, currentPage: p };"  class="row100 body">
+                            <td class="cell100 column1">{{cidade.nome}}</td>
+                            <td class="cell100 column2">{{cidade.estado}}</td>
+                            <td class="cell100 column3">{{cidade.createdAt}}</td>
+                            <td class="cell100 column4"><a (click)="openEditar(cidade)">Editar</a>   |   <a (click)="openDelete(cidade)">Excluir</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf="updateCidade()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Cidades</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="updateClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Estado</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='cidadeSelecionado.estadoId' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
+                                <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">DDD</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='cidadeSelecionado.dddId' name="dddId" (ngModelChange)='onDddSelected($event)'>
+                                <option class='option' *ngFor='let ddd of ddds' [value]="ddd">{{ddd}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Cidade</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="cidadeSelecionado.nome" name="nome" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="updateCidadeAcao(cidadeSelecionado)" id="btCidade" type="button" class="btn btn-block btn-primary">Atualizar Cidade</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{cidadeSelecionado.nome}}</strong> atualizada com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{cidadeSelecionado.nome}}</strong> atualizada com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="createCidade()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1 class="display-3">Cidades</h1>
+                    </div>
+                    <div class="col-md-2">
+                        <a (click)="createClose()" class="btn btn-outline-danger">
+                            <span class="glyphicon glyphicon-log-out" ></span> Voltar
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <div>
+                        <p class="lead">Estado</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='cidadeSelecionado.estadoId' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
+                                <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">DDD</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='cidadeSelecionado.dddId' name="dddId" (ngModelChange)='onDddSelected($event)'>
+                                <option class='option' *ngFor='let ddd of ddds' [value]="ddd">{{ddd}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <br>
+                    <div>
+                        <p class="lead">Cidade</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="cidadeSelecionado.nome" name="nome" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-md-14">
+                        <button (click)="createCidadeAcao(cidadeSelecionado)" id="btCidade" type="button" class="btn btn-block btn-primary">Criar Cidade</button>
+                    </div>
+                    <br>
+                    <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
+                        <strong>{{cidadeSelecionado.nome}}</strong> criado com sucesso.
+                    </div>
+                    <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>{{cidadeSelecionado.nome}}</strong> criado com falha.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="deleteCidade()" class="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="jumbotron col-md-8">
+                <div class="row">
+                    <form>
+                        <div>
+                            <p class="lead">Deseja excluir a cidade <strong>{{cidadeSelecionado.nome}}</strong> ? </p>
+                            <hr class="my-4">
+                        </div>
+                        <div class="col-md-14">
+                            <button (click)="deleteCidadeAcao(cidadeSelecionado)" id="btDeleteConfirm" type="button" class="btn btn-block btn-primary">Ok</button>
+                        </div>
+                        <br>
+                        <div class="col-md-14">
+                            <button (click)="deleteClose()" id="btDeleteCancel" type="button" class="btn btn-block btn-primary">Cancelar</button>
+                        </div>
+                        <br>
+                        <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
+                            <strong>{{cidadeSelecionado.nome}}</strong> deletado com falha.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
