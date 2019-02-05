@@ -215,13 +215,9 @@ export class ProdutosComponent implements OnInit {
                 this.getService.createProduto(produto, this.access_token).subscribe(
                     data => {
                         console.log(data.status);
-                        if (data.status === 200) {
-                            console.log(data);
-                            this.produtos = data;
-                            this.statusApi = 1;
-                        } else {
-                            console.log(data);
-                            this.produtos = data;
+                        if(data.id === 400){
+                            this.statusApi = 2;
+                        }else{
                             this.statusApi = 1;
                         }
                     },

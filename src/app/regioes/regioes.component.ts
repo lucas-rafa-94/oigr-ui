@@ -178,8 +178,14 @@ export class RegioesComponent implements OnInit {
         //         this.access_token = dataToken.access_token;
                 this.helperService.getDdds(this.access_token).subscribe(
                     data => {
-                        console.log(data);
-                        this.listDdds = data;
+                        for (var i = 0; i < data.length ; i++){
+                            var ddd = {
+                                value: data[i][0],
+                                id: data[i][1]
+                            }
+                            this.listDdds.push(ddd);
+                        }
+                        console.log(this.listDdds);
                     },
                     error => {
                         if (error.status === 200) {
@@ -256,6 +262,7 @@ export class RegioesComponent implements OnInit {
                             }
                             this.listCidades.push(cidade);
                         }
+                        console.log(this.listCidades);
 
                     },
                     error => {
@@ -448,6 +455,7 @@ export class RegioesComponent implements OnInit {
                 this.getService.updateRegiao(regiao, this.access_token).subscribe(
                     data => data => {
                         console.log(data.status);
+                        console.log(data.status);
                         this.regioes = data;
                         this.statusApi = 1;
                     },
@@ -498,7 +506,11 @@ export class RegioesComponent implements OnInit {
         }
         if(this.dddShown()){
             regiao.tipoCadastro = 'DDD';
-            regiao.listArt = this.valueDdds;
+            let arrayDdds = [];
+            for(let i = 0; i < this.valueDdds.length; i++){
+                arrayDdds.push(this.valueDdds[i].id);
+            }
+            regiao.listArt = arrayDdds;
         }
         console.log(regiao);
         // this.tokenService.getToken().subscribe(
@@ -507,9 +519,13 @@ export class RegioesComponent implements OnInit {
         //         this.access_token = dataToken.access_token;
                 this.getService.createRegioes(regiao, this.access_token).subscribe(
                     data => {
-                            console.log(data.status);
+                        if(data.id === 200){
                             this.regioes = data;
                             this.statusApi = 1;
+                        }else{
+                            this.regioes = data;
+                            this.statusApi = 2;
+                        }
                     },
                     error => {
                         console.log(error);
@@ -522,7 +538,7 @@ export class RegioesComponent implements OnInit {
     //         }
     //     );
     // }
-}
+    }
     submitSucesso() {
         if (this.statusApi === 1) {
             return true;

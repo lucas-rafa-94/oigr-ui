@@ -159,6 +159,8 @@
                             <kendo-multiselect name="multiSelectDdd"
                                                [data]="listDdds"
                                                [(ngModel)]="valueDdds"
+                                               [textField]="'id'"
+                                               [valueField]="'value'"
                             ></kendo-multiselect>
                         </div>
                     </div>
@@ -312,6 +314,8 @@
                             <kendo-multiselect name="multiSelectDdd"
                                     [data]="listDdds"
                                     [(ngModel)]="valueDdds"
+                                               [textField]="'value'"
+                                               [valueField]="'id'"
                             ></kendo-multiselect>
                         </div>
                     </div>

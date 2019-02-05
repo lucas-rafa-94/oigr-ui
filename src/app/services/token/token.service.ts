@@ -10,7 +10,7 @@ export class TokenService {
     private url = 'https://idcs-064695a16a4a4578a2489971e2fd2fc2.identity.oraclecloud.com/oauth2/v1/token';
 
     getToken(): Observable<any> {
-        // const body = `grant_type=client_credentials&scope=https://CrudRegioes-mktdigitaloi.brcom-central-1.oraclecloud.com:443/external`;
+        // const body = `grant_type=client_credentials&scope=http://localhost:8098:443/external`;
         // const httpOptions = {
         //     headers: new HttpHeaders({
         //         'Content-Type': 'application/x-www-form-urlencoded',
