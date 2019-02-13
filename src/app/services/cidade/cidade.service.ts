@@ -38,14 +38,15 @@ export class CidadeService {
         return this.http.get(this.url + '/cidades' ,  httpOptions);
     }
 
-    getCidadesByEstado(estado): Observable<any> {
+    getCidadesByEstado(ids): Observable<any> {
+
         const httpOptions = {
             headers: new HttpHeaders({
                 'Accept':  'application/json',
                 'authorization': 'Basic ' + this.token
             })
         };
-        return this.http.get(this.url + '/cidades/estado/' + estado ,  httpOptions);
+        return this.http.get(this.url + '/cidades/estado/array?ids=' + ids ,  httpOptions);
     }
 
     deleteCidade(id): Observable<any> {

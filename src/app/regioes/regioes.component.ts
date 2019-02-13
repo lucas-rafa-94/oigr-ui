@@ -13,11 +13,15 @@ import {TokenService} from '../services/token/token.service';
   styleUrls: ['./regioes.component.css']
 })
 export class RegioesComponent implements OnInit {
+    dddTodos = false;
+    cidadeTodos = false;
     listRegiaoMacro = [];
     access_token;
     tokenService;
     listDdds = [];
     listCidades = [];
+    listEstados: any = [];
+    valueEstados: any = [];
     estados = [];
     produtos = [];
     getService;
@@ -37,7 +41,7 @@ export class RegioesComponent implements OnInit {
         createdAt: '2018-10-16',
         tipoProdutoId: '',
         tipoCadastro: '',
-        status: 'Ativo',
+        status: 'Rascunho',
         listArt: [],
         nome: '',
         descricao: ''
@@ -80,6 +84,26 @@ export class RegioesComponent implements OnInit {
         this.visualizacaoOpen = true;
     }
 
+    cidadeSelecionarTodos(){
+        if(this.cidadeTodos === false){
+            this.valueCidades = this.listCidades;
+            this.cidadeTodos = false;
+        } else if (this.cidadeTodos === true){
+            this.valueCidades = [];
+            this.cidadeTodos = true;
+        }
+    }
+
+    dddSelecionarTodos(){
+        if(this.dddTodos === false){
+            this.valueDdds = this.listDdds;
+            this.dddTodos = false;
+        } else if (this.dddTodos === true){
+            this.valueDdds = [];
+            this.dddTodos = true;
+        }
+    }
+
     openDelete(regiao) {
         this.statusApi = 0;
         this.regiaoSelecionado = regiao;
@@ -96,6 +120,9 @@ export class RegioesComponent implements OnInit {
             return false;
         }
     }
+
+
+
     getProdutosService() {
         this.produtos = [];
         // this.tokenService.getToken().subscribe(
@@ -185,6 +212,7 @@ export class RegioesComponent implements OnInit {
                             }
                             this.listDdds.push(ddd);
                         }
+
                         console.log(this.listDdds);
                     },
                     error => {
@@ -225,7 +253,14 @@ export class RegioesComponent implements OnInit {
                 this.helperService.getEstados(this.access_token).subscribe(
                     data => {
                         console.log(data);
-                        this.estados = data;
+                        for (var i = 0; i < data.length ; i++){
+                            var estado = {
+                                id: data[i][0],
+                                nome: data[i][1]
+                            }
+                            this.listEstados.push(estado);
+                        }
+                        console.log(this.listEstados);
                     },
                     error => {
                         if (error.status === 200) {
@@ -242,17 +277,24 @@ export class RegioesComponent implements OnInit {
         // );
     }
 
-    onEstadoSelected(event){
+    onEstadoSelected(event) {
         console.log(event);
         this.getCidadesApi(event);
+        this.listCidades = [];
     }
 
-    getCidadesApi(estado) {
+    getCidadesApi(estados) {
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-                this.getServiceCidade.getCidadesByEstado(estado, this.access_token).subscribe(
+                console.log(estados)
+                let ids = '';
+                for(var i = 0; i < estados.length; i ++){
+                    ids += estados[i].id + ',';
+                }
+                console.log(ids);
+                this.getServiceCidade.getCidadesByEstado(ids, this.access_token).subscribe(
                     data => {
                         console.log(data);
                         for (var i = 0; i < data.length ; i++){
@@ -322,6 +364,12 @@ export class RegioesComponent implements OnInit {
     }
 
     updateClose() {
+        this.valueDdds = [];
+        this.valueCidades = [];
+        this.valueEstados = [];
+        this.listCidades = [];
+        this.listDdds = [];
+        this.listEstados = [];
         this.statusApi = 0;
         this.criaOrUpdateOpen = false;
         this.createOpen = false;
@@ -344,7 +392,86 @@ export class RegioesComponent implements OnInit {
         this.criaOrUpdateOpen = true;
         this.visualizacaoOpen = false;
         this.createOpen = false;
+        console.log(regiao);
+        if(regiao.tipoCadastro === 'DDD'){
+            this.dddEscolhido = true;
+            this.ufEscolhido = false;
+            this.getRegioesApiByDdd(regiao);
+        }else if (regiao.tipoCadastro === 'UF'){
+            this.ufEscolhido = true;
+            this.dddEscolhido = false;
+            this.getEstadosCidadesApiByRegiao(regiao);
+        }
+
     }
+
+    getEstadosCidadesApiByRegiao(regiao) {
+        // this.tokenService.getToken().subscribe(
+        //     dataToken => {
+        //         console.log(dataToken.access_token);
+        //         this.access_token = dataToken.access_token;
+        this.getService.getRegioesByEstado(regiao.id, this.access_token).subscribe(
+            data => {
+                console.log(data);
+                this.valueEstados = data;
+                this.getEstadosApi();
+                this.getService.getRegioesByCidade(regiao.id, this.access_token).subscribe(
+                    data => {
+                        console.log(data);
+                        this.valueCidades = data;
+                        this.getCidadesApi(this.valueEstados);
+                    },
+                    error => {
+                        if (error.status === 200) {
+                            console.log(error);
+                        } else {
+                            console.log(error);
+                        }
+                    }
+                );
+            },
+            error => {
+                if (error.status === 200) {
+                    console.log(error);
+                } else {
+                    console.log(error);
+                }
+            }
+        );
+        //     } ,
+        //     errorToken => {
+        //         console.log(errorToken);
+        //     }
+        // );
+    }
+
+
+    getRegioesApiByDdd(regiao) {
+        // this.tokenService.getToken().subscribe(
+        //     dataToken => {
+        //         console.log(dataToken.access_token);
+        //         this.access_token = dataToken.access_token;
+        this.getService.getRegioesByDdd(regiao.id, this.access_token).subscribe(
+            data => {
+                console.log(data);
+                this.valueDdds = data;
+                this.getDddsApi();
+            },
+            error => {
+                if (error.status === 200) {
+                    console.log(error);
+                } else {
+                    console.log(error);
+                }
+            }
+        );
+        //     } ,
+        //     errorToken => {
+        //         console.log(errorToken);
+        //     }
+        // );
+    }
+
 
     openCreate() {
         this.statusApi = 0;
@@ -352,7 +479,7 @@ export class RegioesComponent implements OnInit {
             createdAt: '',
             tipoProdutoId: '',
             tipoCadastro: '',
-            status: 'Ativo',
+            status: 'Rascunho',
             listArt: [],
             nome: '',
             descricao: ''
@@ -380,11 +507,12 @@ export class RegioesComponent implements OnInit {
                                     id: data[i][0],
                                     nome: data[i][1],
                                     publicar: false,
-                                    produtoId: data[i][2] ,
+                                    tipoProdutoId: data[i][2] ,
                                     nomeProduto: data[i][3],
                                     descricao: data[i][4],
                                     status: data[i][5],
-                                    createdAt: data[i][6]
+                                    createdAt: data[i][6],
+                                    tipoCadastro: data[i][7]
                                 }
                                 this.regioes.push(regiao);
                             }
@@ -418,8 +546,9 @@ export class RegioesComponent implements OnInit {
     publicaRegioes(){
         let arrayPublicaRegioes = [];
         for(let i = 0; i < this.regioes.length; i++){
-            if(this.regioes[i].publicar){
+            if(this.regioes[i].publicar && this.regioes[i].status === 'Ativo'){
                 let regiaoPublicada = {
+                    id: this.regioes[i].id,
                     nome: this.regioes[i].nome,
                     regiaoId : this.regioes[i].id,
                     createdAt : this.regioes[i].createdAt
@@ -431,15 +560,15 @@ export class RegioesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-                this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
-                    data => {
-                            this.statusApi = 1;
-                    },
-                    error => {
-                        this.statusApi = 2;
-                        console.log(error);
-                    }
-                );
+        this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
+            data => {
+                this.statusApi = 1;
+            },
+            error => {
+                this.statusApi = 2;
+                console.log(error);
+            }
+        );
         //     } ,
         //     errorToken => {
         //         console.log(errorToken);
@@ -448,27 +577,50 @@ export class RegioesComponent implements OnInit {
     }
 
     updateRegiaoAcao(regiao){
+        regiao.createdAt = '2018-10-16'
+        if (this.ufShown()){
+            let arrayCidades = [];
+            regiao.tipoCadastro = 'UF';
+            for(let i = 0; i < this.valueCidades.length; i++){
+                arrayCidades.push(this.valueCidades[i].id);
+            }
+            regiao.listArt = arrayCidades;
+        }
+        if(this.dddShown()){
+            regiao.tipoCadastro = 'DDD';
+            let arrayDdds = [];
+            for(let i = 0; i < this.valueDdds.length; i++){
+                arrayDdds.push(this.valueDdds[i].id);
+            }
+            regiao.listArt = arrayDdds;
+        }
+        console.log(regiao);
+        regiao.status = 'Ativo';
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-                this.getService.updateRegiao(regiao, this.access_token).subscribe(
-                    data => data => {
-                        console.log(data.status);
-                        console.log(data.status);
-                        this.regioes = data;
-                        this.statusApi = 1;
-                    },
-                    error => {
-                        console.log(error);
-                        this.statusApi = 2;
-                    }
-                );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
+        this.getService.updateRegioes(regiao, this.access_token).subscribe(
+            data => {
+                if (data.id === 200){
+                    this.regioes = data;
+                    this.statusApi = 1;
+                }else {
+                    this.regioes = data;
+                    this.statusApi = 2;
+                }
+            },
+            error => {
+                console.log(error);
+                this.statusApi = 2;
+            }
+        );
+        //         } ,
+        //         errorToken => {
+        //             console.log(errorToken);
+        //         }
+        //     );
+        // }
     }
 
 
@@ -519,10 +671,10 @@ export class RegioesComponent implements OnInit {
         //         this.access_token = dataToken.access_token;
                 this.getService.createRegioes(regiao, this.access_token).subscribe(
                     data => {
-                        if(data.id === 200){
+                        if (data.id === 200){
                             this.regioes = data;
                             this.statusApi = 1;
-                        }else{
+                        }else {
                             this.regioes = data;
                             this.statusApi = 2;
                         }

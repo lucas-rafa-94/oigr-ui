@@ -59,14 +59,45 @@ export class RegiaoUserService {
         return this.http.get(this.url + '/regiao' ,  httpOptions);
     }
 
-    updateRegiao(payload): Observable<any> {
+
+    getRegioesByDdd(id): Observable<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Accept':  'application/json',
                 'authorization': 'Basic ' + this.token
             })
         };
-        return this.http.post(this.url + '/regiao-insert-custom' , payload, httpOptions);
+        return this.http.get(this.url + '/regiao-insert-custom/ddd/' + id ,  httpOptions);
+    }
+
+    getRegioesByEstado(id): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Accept':  'application/json',
+                'authorization': 'Basic ' + this.token
+            })
+        };
+        return this.http.get(this.url + '/regiao-insert-custom/estado/' + id ,  httpOptions);
+    }
+
+    getRegioesByCidade(id): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Accept':  'application/json',
+                'authorization': 'Basic ' + this.token
+            })
+        };
+        return this.http.get(this.url + '/regiao-insert-custom/cidade/' + id ,  httpOptions);
+    }
+
+    updateRegioes(payload): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Accept':  'application/json',
+                'authorization': 'Basic ' + this.token
+            })
+        };
+        return this.http.put(this.url + '/regiao-insert-custom' , payload, httpOptions);
     }
 
     createRegioes(payload): Observable<any> {
@@ -89,7 +120,7 @@ export class RegiaoUserService {
         return this.http.delete(this.url + '/regiao/' + id, httpOptions);
     }
 
-    createPublicaRegioes(payload ): Observable<any> {
+    createPublicaRegioes(payload): Observable<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Accept':  'application/json',

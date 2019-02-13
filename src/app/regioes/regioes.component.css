@@ -665,3 +665,27 @@ button#btDeleteCancel {
   width: 650px;
 }
 
+div#selecionarTodos {
+    margin-top: 20px;
+}
+
+button#btBuscaCidadesCreate {
+    margin-top: 20px;
+}
+
+.example-wrapper {
+    min-height: 50px;
+}
+
+#selecionarTodos {
+
+}
+
+button#btBuscaCidades {
+    height: 40px;
+}
+
+button#btBuscaCidadesCreate{
+    height: 40px;
+}
+

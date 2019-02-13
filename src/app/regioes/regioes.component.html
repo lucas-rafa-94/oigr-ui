@@ -125,30 +125,30 @@
                     </div>
                     <hr class="my-4">
                     <br>
-                    <div>
-                        <p class="lead">Agrupamento</p>
-                        <hr class="my-4">
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" (click)="dddCheck()" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Ddd
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" (click)="ufCheck()" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Uf
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" (click)="regiaoMacroCheck()" id="exampleRadios3" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Região Macro
-                        </label>
-                    </div>
-                    <hr class="my-4">
-                    <br>
+                    <!--<div>-->
+                        <!--<p class="lead">Agrupamento</p>-->
+                        <!--<hr class="my-4">-->
+                    <!--</div>-->
+                    <!--<div class="form-check">-->
+                        <!--<input class="form-check-input" (click)="dddCheck()" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">-->
+                        <!--<label class="form-check-label" for="exampleRadios1">-->
+                            <!--Ddd-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="form-check">-->
+                        <!--<input class="form-check-input" type="radio" (click)="ufCheck()" name="exampleRadios" id="exampleRadios2" value="option2">-->
+                        <!--<label class="form-check-label" for="exampleRadios2">-->
+                            <!--Uf-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="form-check">-->
+                        <!--<input class="form-check-input" type="radio" name="exampleRadios" (click)="regiaoMacroCheck()" id="exampleRadios3" value="option2">-->
+                        <!--<label class="form-check-label" for="exampleRadios2">-->
+                            <!--Região Macro-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<hr class="my-4">-->
+                    <!--<br>-->
 
                     <div *ngIf="dddShown()">
                         <div>
@@ -156,12 +156,19 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectDdd"
+
+                            <kendo-multiselect id="updateMultiSelectDdd" name="updateMultiSelectDdd"
                                                [data]="listDdds"
                                                [(ngModel)]="valueDdds"
                                                [textField]="'id'"
                                                [valueField]="'value'"
                             ></kendo-multiselect>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" (click)="dddSelecionarTodos()" type="checkbox" name="dddSelecionarTodos" id="dddSelecionarTodos" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Selecionar Todos
+                            </label>
                         </div>
                     </div>
 
@@ -172,9 +179,23 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
-                                    <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
-                                </select>
+                            <!--<select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>-->
+                            <!--<option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+                            <div class="example-wrapper">
+                                <kendo-multiselect
+                                        id="updateuf"
+                                                    name="updatemultiSelectUf"
+                                                   [data]="listEstados"
+                                                   [(ngModel)]="valueEstados"
+                                                   [textField]="'nome'"
+                                                   [valueField]="'id'"
+                                ></kendo-multiselect >
+                            </div>
+                            <div class="col-md-14">
+                                <button (click)="onEstadoSelected(valueEstados)" id="btBuscaCidades" type="button" class="btn btn-block btn-info">Buscar Cidades</button>
+                            </div>
                             </div>
                         </div>
                         <hr class="my-4">
@@ -184,12 +205,20 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectUf"
+                            <kendo-multiselect
+                                               id="Cidade"
+                                               name="updatemultiSelectCidade"
                                                [data]="listCidades"
                                                [(ngModel)]="valueCidades"
                                                [textField]="'nome'"
                                                [valueField]="'id'"
                             ></kendo-multiselect>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" (click)="cidadeSelecionarTodos()" type="checkbox" name="cidadeSelecionarTodos" id="cidadeSelecionarTodos" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Selecionar Todos
+                            </label>
                         </div>
                     </div>
 
@@ -311,12 +340,18 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectDdd"
+                            <kendo-multiselect id="createmultiSelectDdd" name="createmultiSelectDdd"
                                     [data]="listDdds"
                                     [(ngModel)]="valueDdds"
                                                [textField]="'value'"
                                                [valueField]="'id'"
                             ></kendo-multiselect>
+                        </div>
+                        <div class="form-check" id="selecionarTodos">
+                            <input class="form-check-input" (click)="dddSelecionarTodos()" type="checkbox" name="dddSelecionarTodos" id="dddSelecionarTodos" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Selecionar Todos
+                            </label>
                         </div>
                     </div>
 
@@ -327,9 +362,21 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>
-                                    <option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>
-                                </select>
+                                <!--<select class='select-option' required [(ngModel)]='regiaoSelecionado.estado' name="estadoId" (ngModelChange)='onEstadoSelected($event)'>-->
+                                    <!--<option class='option' *ngFor='let estado of estados' [value]="estado[0]">{{estado[1]}}</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                            <div class="example-wrapper">
+                                <kendo-multiselect id="createmultiSelectUf" name="createmultiSelectUf"
+                                                   [data]="listEstados"
+                                                   [(ngModel)]="valueEstados"
+                                                   [textField]="'nome'"
+                                                   [valueField]="'id'"
+                                ></kendo-multiselect >
+                            </div>
+                            <div class="col-md-14">
+                                <button (click)="onEstadoSelected(valueEstados)" id="btBuscaCidadesCreate" type="button" class="btn btn-block btn-info">Buscar Cidades</button>
+                            </div>
                             </div>
                         </div>
                         <hr class="my-4">
@@ -339,12 +386,18 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectUf"
+                            <kendo-multiselect id="createmultiSelectUf" name="createmultiSelectUf"
                                                [data]="listCidades"
                                                [(ngModel)]="valueCidades"
                                                [textField]="'nome'"
                                                [valueField]="'id'"
                             ></kendo-multiselect>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" (click)="cidadeSelecionarTodos()" type="checkbox" name="cidadeSelecionarTodos" id="cidadeSelecionarTodos" value="option1">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Selecionar Todos
+                            </label>
                         </div>
                     </div>
 

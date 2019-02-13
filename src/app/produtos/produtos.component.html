@@ -18,7 +18,6 @@
             <thead>
             <tr class="row100 head">
               <th class="cell100 column1">Produto</th>
-              <th class="cell100 column3">Criação</th>
               <th class="cell100 column4">Ações</th>
             </tr>
             </thead>
@@ -30,7 +29,6 @@
             <tbody>
             <tr *ngFor="let produto of produtos | filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
               <td class="cell100 column1">{{produto.nome}}</td>
-              <td class="cell100 column3">31-12-2018</td>
               <td class="cell100 column4"><a (click)="openEditar(produto)">Editar</a>   |   <a (click)="openDelete(produto)">Excluir</a></td>
             </tr>
             </tbody>

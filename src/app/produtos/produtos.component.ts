@@ -208,34 +208,38 @@ export class ProdutosComponent implements OnInit {
             nome: '',
             createdAt: ''
         };
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
-                this.getService.createProduto(produto, this.access_token).subscribe(
-                    data => {
-                        console.log(data.status);
-                        if(data.id === 400){
-                            this.statusApi = 2;
-                        }else{
-                            this.statusApi = 1;
-                        }
-                    },
-                    error => {
-                        if (error.status === 200) {
-                            console.log(error);
-                            this.statusApi = 2;
-                        } else {
-                            console.log(error);
-                        }
+
+        if(produto.nome !== '' && produto.categoriaCommerceId !== '' ){
+            // this.tokenService.getToken().subscribe(
+            //     dataToken => {
+            //         console.log(dataToken.access_token);
+            //         this.access_token = dataToken.access_token;
+            this.getService.createProduto(produto, this.access_token).subscribe(
+                data => {
+                    console.log(data.status);
+                    if(data.id === 400){
+                        this.statusApi = 2;
+                    }else{
+                        this.statusApi = 1;
                     }
-                );
-            }
-    //         errorToken => {
-    //             console.log(errorToken);
-    //         }
-    //     );
-    // }
+                },
+                error => {
+                    if (error.status === 200) {
+                        console.log(error);
+                        this.statusApi = 2;
+                    } else {
+                        console.log(error);
+                    }
+                }
+            );
+        }else{
+            this.statusApi = 2;
+        }
+        //         errorToken => {
+        //             console.log(errorToken);
+        //         }
+        //     );
+        }
     deleteProdutoAcao(produto) {
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
