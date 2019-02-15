@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6348538d-5960-4b4e-8602-585cd51a68a0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +99,7 @@
         <counts>
           <entry key="css" value="61" />
           <entry key="html" value="776" />
-          <entry key="ts" value="2341" />
+          <entry key="ts" value="2348" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -111,7 +107,7 @@
           <entry key="CSS" value="61" />
           <entry key="HTML" value="775" />
           <entry key="JavaScript" value="1" />
-          <entry key="TypeScript" value="2341" />
+          <entry key="TypeScript" value="2348" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -204,8 +200,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="5" column="92" selection-start-line="5" selection-start-column="92" selection-end-line="5" selection-end-column="92" />
+            <state relative-caret-position="405">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -354,9 +350,9 @@
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.ts" />
         <option value="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" />
       </list>
     </option>
   </component>
@@ -649,7 +645,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318510000" />
+    <option name="totallyTimeSpent" value="318845000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,9 +658,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="23" width="1653" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.28243327" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.28243327" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -678,7 +673,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.27914438" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.27914438" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32853982" />
@@ -951,8 +946,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="92" selection-start-line="5" selection-start-column="92" selection-end-line="5" selection-end-column="92" />
+        <state relative-caret-position="405">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
