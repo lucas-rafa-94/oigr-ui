@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class LoginInService {
-    private url = 'https://CrudRegioes-mktdigitaloi.brcom-central-1.oraclecloud.com/api/v1';
+    // private url = 'https://CrudRegioes-mktdigitaloi.brcom-central-1.oraclecloud.com/api/v1';
+    private url = 'https://oitesteback.herokuapp.com/api/v1';
 
   constructor(private http: HttpClient) {}
 
@@ -21,9 +22,5 @@ export class LoginInService {
        return this.http.get(this.url + '/usuarios/login?email=' + login + '&password=' + password ,  httpOptions);
    }
 }
-
-
-
-
 
 

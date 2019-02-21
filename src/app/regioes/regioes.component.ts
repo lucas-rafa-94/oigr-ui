@@ -121,6 +121,22 @@ export class RegioesComponent implements OnInit {
         }
     }
 
+    ativo(status){
+        if(status === 'Ativo'){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    notAtivo(status){
+        if(status === 'Ativo'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
     getProdutosService() {
@@ -406,56 +422,94 @@ export class RegioesComponent implements OnInit {
     }
 
     getEstadosCidadesApiByRegiao(regiao) {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
-        this.getService.getRegioesByEstado(regiao.id, this.access_token).subscribe(
+        this.helperService.getEstados(this.access_token).subscribe(
             data => {
                 console.log(data);
-                this.valueEstados = data;
-                this.getEstadosApi();
-                this.getService.getRegioesByCidade(regiao.id, this.access_token).subscribe(
-                    data => {
-                        console.log(data);
-                        this.valueCidades = data;
-                        this.getCidadesApi(this.valueEstados);
+                for (var i = 0; i < data.length ; i++){
+                    var estado = {
+                        id: data[i][0],
+                        nome: data[i][1]
+                    }
+                    this.listEstados.push(estado);
+                }
+                console.log(this.listEstados);
+                this.getService.getRegioesByEstado(regiao.id, this.access_token).subscribe(
+                    dataRegiao => {
+                        console.log(dataRegiao);
+                        this.valueEstados = dataRegiao;
+                        let ids = '';
+                        for(var i = 0; i < this.valueEstados.length; i ++){
+                            ids += this.valueEstados[i].id + ',';
+                        }
+                        this.getServiceCidade.getCidadesByEstado(ids, this.access_token).subscribe(
+                            dataGetCidades => {
+                                console.log(dataGetCidades);
+                                for (var i = 0; i < dataGetCidades.length ; i++){
+                                    var cidade = {
+                                        id: dataGetCidades[i][0],
+                                        nome: dataGetCidades[i][3]
+                                    }
+                                    this.listCidades.push(cidade);
+                                }
+                                console.log(this.listCidades);
+                                this.getService.getRegioesByCidade(regiao.id, this.access_token).subscribe(
+                                    dataListCidade => {
+                                        console.log(dataListCidade);
+                                        this.valueCidades = dataListCidade;
+                                    },
+                                    errorListCidade => {
+                                        console.log(errorListCidade);
+                                    }
+                                );
+
+                            },
+                            errorGetCidades => {
+                                console.log(errorGetCidades);
+                            }
+                        );
                     },
-                    error => {
-                        if (error.status === 200) {
-                            console.log(error);
+                    errorRegiao => {
+                        if (errorRegiao.status === 200) {
+                            console.log(errorRegiao);
                         } else {
-                            console.log(error);
+                            console.log(errorRegiao);
                         }
                     }
                 );
             },
             error => {
-                if (error.status === 200) {
-                    console.log(error);
-                } else {
-                    console.log(error);
-                }
+               console.log(error);
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
-
-
     getRegioesApiByDdd(regiao) {
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-        this.getService.getRegioesByDdd(regiao.id, this.access_token).subscribe(
+        this.helperService.getDdds(this.access_token).subscribe(
             data => {
-                console.log(data);
-                this.valueDdds = data;
-                this.getDddsApi();
+                for (var i = 0; i < data.length ; i++){
+                    var ddd = {
+                        value: data[i][0],
+                        id: data[i][1]
+                    }
+                    this.listDdds.push(ddd);
+                    this.getService.getRegioesByDdd(regiao.id, this.access_token).subscribe(
+                        dataIn => {
+                            console.log(dataIn);
+                            this.valueDdds = dataIn;
+                        },
+                        errorIn => {
+                            if (errorIn.status === 200) {
+                                console.log(errorIn);
+                            } else {
+                                console.log(errorIn);
+                            }
+                        }
+                    );
+                }
+                console.log(this.listDdds);
             },
             error => {
                 if (error.status === 200) {
@@ -484,6 +538,12 @@ export class RegioesComponent implements OnInit {
             nome: '',
             descricao: ''
         };
+        this.listDdds = [];
+        this.listCidades = [];
+        this.listEstados = [];
+        this.dddEscolhido = false;
+        this.ufEscolhido = false;
+        this.regiaoMacroEscolhido = false;
         this.criaOrUpdateOpen = false;
         this.visualizacaoOpen = false;
         this.createOpen = true;

@@ -27,7 +27,6 @@
                         <thead>
                         <tr class="row100 head">
                             <th class="cell100 column1">Região</th>
-                            <th class="cell100 column2">Descrição</th>
                             <th class="cell100 column3">Produto</th>
                             <th class="cell100 column3">Status</th>
                             <th class="cell100 column3">Criação</th>
@@ -42,12 +41,12 @@
                     <table>
                         <tbody>
                         <tr *ngFor="let regiao of regioes| filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
-                            <td class="cell100 column1">{{regiao.nome}}</td>
-                            <td class="cell100 column2">{{regiao.descricao}}</td>
+                            <td class="cell100 column1">{{regiao.nome.substring(0, 24)}}</td>
                             <td class="cell100 column3">{{regiao.nomeProduto}}</td>
                             <td class="cell100 column3">{{regiao.status}}</td>
                             <td class="cell100 column3">{{regiao.createdAt}}</td>
-                            <td class="cell100 column3"><input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="regiao.publicar" (click)="checkRegioes(regioes, regiao.id)"></td>
+                            <td *ngIf="ativo(regiao.status)" class="cell100 column3"><input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="regiao.publicar" (click)="checkRegioes(regioes, regiao.id)"></td>
+                            <td *ngIf="notAtivo(regiao.status)" class="cell100 column3"></td>
                             <td class="cell100 column4"><a (click)="openEditar(regiao)">Editar</a>   |   <a (click)="openDelete(regiao)">Excluir</a></td>
                         </tr>
                         </tbody>
@@ -185,7 +184,7 @@
                             <!--</div>-->
                             <div class="example-wrapper">
                                 <kendo-multiselect
-                                        id="updateuf"
+                                                   id="updateuf"
                                                     name="updatemultiSelectUf"
                                                    [data]="listEstados"
                                                    [(ngModel)]="valueEstados"
@@ -215,8 +214,8 @@
                             ></kendo-multiselect>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" (click)="cidadeSelecionarTodos()" type="checkbox" name="cidadeSelecionarTodos" id="cidadeSelecionarTodos" value="option1">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input" (click)="cidadeSelecionarTodos()" type="checkbox" name="cidadeSelecionarTodos" id="cidadeSelecionarTodosId" value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
                                 Selecionar Todos
                             </label>
                         </div>
@@ -386,7 +385,8 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect id="createmultiSelectUf" name="createmultiSelectUf"
+                            <kendo-multiselect id="createmultiSelectCidadeId"
+                                               name="createmultiSelectCidade"
                                                [data]="listCidades"
                                                [(ngModel)]="valueCidades"
                                                [textField]="'nome'"
