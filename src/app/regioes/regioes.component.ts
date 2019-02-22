@@ -75,6 +75,7 @@ export class RegioesComponent implements OnInit {
         this.ufEscolhido = false;
         this.regiaoMacroEscolhido = false;
         this.deleteOpen = false;
+        this.getMissingCidades();
     }
     deleteClose() {
         this.statusApi = 0
@@ -308,7 +309,7 @@ export class RegioesComponent implements OnInit {
     onEstadoSelected(event) {
         console.log(event);
         this.getCidadesApi(event);
-        this.listCidades = [];
+        // this.listCidades = [];
     }
 
     getCidadesApi(estados) {
@@ -367,7 +368,6 @@ export class RegioesComponent implements OnInit {
 
     visualizacao(){
         if(this.visualizacaoOpen) {
-            this.getMissingCidades();
             return true;
         } else {
             return false;
@@ -392,6 +392,7 @@ export class RegioesComponent implements OnInit {
 
     updateClose() {
         this.valueDdds = [];
+        this.listDdds = [];
         this.valueCidades = [];
         this.valueEstados = [];
         this.listCidades = [];
@@ -402,10 +403,19 @@ export class RegioesComponent implements OnInit {
         this.createOpen = false;
         this.visualizacaoOpen = true;
         this.getRegioesApi();
+        this.getMissingCidades();
     }
 
     createClose() {
         this.statusApi = 0;
+        this.listDdds = [];
+        this.valueDdds = [];
+        this.listDdds = [];
+        this.valueCidades = [];
+        this.valueEstados = [];
+        this.listCidades = [];
+        this.listDdds = [];
+        this.listEstados = [];
         this.criaOrUpdateOpen = false;
         this.createOpen = false;
         this.visualizacaoOpen = true;
@@ -617,7 +627,7 @@ export class RegioesComponent implements OnInit {
     publicaRegioes(){
         let arrayPublicaRegioes = [];
         for(let i = 0; i < this.regioes.length; i++){
-            if(this.regioes[i].publicar && this.regioes[i].status === 'Ativo'){
+            if(this.regioes[i].publicar && this.regioes[i].status === 'Rascunho'){
                 let regiaoPublicada = {
                     id: this.regioes[i].id,
                     nome: this.regioes[i].nome,
@@ -627,6 +637,7 @@ export class RegioesComponent implements OnInit {
                 arrayPublicaRegioes.push(regiaoPublicada);
             }
         }
+        console.log(arrayPublicaRegioes);
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
