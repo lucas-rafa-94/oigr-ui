@@ -130,4 +130,14 @@ export class RegiaoUserService {
         };
         return this.http.post(this.url + '/regiao-publica' , payload, httpOptions);
     }
+
+    getCidadesMissing(): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Accept':  'application/json',
+                'authorization': 'Basic ' + this.token
+            })
+        };
+        return this.http.get(this.url + '/produtos/missing-cidades', httpOptions);
+    }
 }

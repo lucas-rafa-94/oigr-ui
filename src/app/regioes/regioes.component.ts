@@ -16,6 +16,7 @@ export class RegioesComponent implements OnInit {
     dddTodos = false;
     cidadeTodos = false;
     listRegiaoMacro = [];
+    listMissingCidades = [];
     access_token;
     tokenService;
     listDdds = [];
@@ -135,6 +136,17 @@ export class RegioesComponent implements OnInit {
         }else{
             return false;
         }
+    }
+
+    getMissingCidades(){
+        this.getService.getCidadesMissing().subscribe(
+            data => {
+                this.listMissingCidades = data;
+            },
+            error => {
+                console.log(error);
+            }
+        );
     }
 
 
@@ -353,10 +365,9 @@ export class RegioesComponent implements OnInit {
     }
 
 
-
-
     visualizacao(){
         if(this.visualizacaoOpen) {
+            this.getMissingCidades();
             return true;
         } else {
             return false;

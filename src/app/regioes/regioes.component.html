@@ -11,6 +11,9 @@
             <div class="col-md-14">
                 <button type="button" openCreate (click)="publicaRegioes()" id="create" class="btn btn-block btn-info">Publicar Regiões</button>
             </div>
+            <div *ngFor="let produto of listMissingCidades" class="alert alert-danger alert-dismissible" role="alert">
+                <strong>{{produto.nome}}</strong> - Ainda faltam <strong>{{produto.values}}</strong> cidades para serem associadas ao produto.
+            </div>
             <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
                 <strong>Regiões Publicadas com sucesso</strong>.
             </div>

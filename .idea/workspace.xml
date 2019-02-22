@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6348538d-5960-4b4e-8602-585cd51a68a0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/compiler/bundles/.compiler.umd.js.map.icloud" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/compiler/esm5/.compiler.js.map.icloud" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/regioes/regioes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regioes/regioes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +75,7 @@
     <session id="1264511705">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.17" value="1" />
@@ -80,6 +84,7 @@
           <entry key="project.open.time.28" value="2" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.38" value="1" />
@@ -87,29 +92,29 @@
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="Angular2LanguageService" value="15" />
-          <entry key="TsLintLanguageService" value="13" />
+          <entry key="Angular2LanguageService" value="16" />
+          <entry key="TsLintLanguageService" value="14" />
           <entry key="TypeScriptServerServiceImpl" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="61" />
-          <entry key="html" value="836" />
-          <entry key="ts" value="2594" />
+          <entry key="html" value="943" />
+          <entry key="ts" value="2704" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="61" />
-          <entry key="HTML" value="834" />
+          <entry key="HTML" value="941" />
           <entry key="JavaScript" value="2" />
-          <entry key="TypeScript" value="2594" />
+          <entry key="TypeScript" value="2704" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -138,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1490">
-              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+            <state relative-caret-position="214">
+              <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -150,8 +155,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="101" column="30" lean-forward="true" selection-start-line="91" selection-start-column="24" selection-end-line="101" selection-end-column="30" />
+            <state relative-caret-position="180">
+              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -160,7 +165,7 @@
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -178,7 +183,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="61" />
+              <caret line="9" column="59" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -213,8 +218,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+            <state relative-caret-position="2070">
+              <caret line="140" column="28" selection-start-line="140" selection-start-column="28" selection-end-line="140" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -222,7 +227,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
+            <state relative-caret-position="10095">
               <caret line="673" column="1" selection-start-line="673" selection-start-column="1" selection-end-line="673" selection-end-column="1" />
             </state>
           </provider>
@@ -239,7 +244,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>arquivos</find>
       <find>Usuario</find>
       <find>usuario</find>
       <find>produtos</find>
@@ -267,8 +271,9 @@
       <find>publicar</find>
       <find>Selecionar</find>
       <find>seleci</find>
-      <find>getEstadosCidadesApiByRegiao</find>
       <find>valueEstados</find>
+      <find>getEstadosCidadesApiByRegiao</find>
+      <find>visuali</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -350,11 +355,11 @@
         <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.css" />
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.html" />
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" />
         <option value="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" />
         <option value="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" />
         <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.html" />
       </list>
@@ -386,7 +391,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -472,13 +476,14 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="git&#9;ACTION&#9;Github.Share" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550777426419" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550800588799" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -639,12 +644,13 @@
       <workItem from="1549975190312" duration="2971000" />
       <workItem from="1550046434539" duration="6236000" />
       <workItem from="1550590470020" duration="2719000" />
-      <workItem from="1550753305584" duration="10682000" />
+      <workItem from="1550753305584" duration="13205000" />
+      <workItem from="1550796464913" duration="1966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333740000" />
+    <option name="totallyTimeSpent" value="338229000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -659,7 +665,7 @@
     <frame x="27" y="23" width="1653" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.2886406" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.29236498" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -878,55 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="673" column="1" selection-start-line="673" selection-start-column="1" selection-end-line="673" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1490">
-          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/produto/produto.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -937,17 +898,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/produto/produto.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10095">
+          <caret line="673" column="1" selection-start-line="673" selection-start-column="1" selection-end-line="673" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+        <state relative-caret-position="2070">
+          <caret line="140" column="28" selection-start-line="140" selection-start-column="28" selection-end-line="140" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="101" column="30" lean-forward="true" selection-start-line="91" selection-start-column="24" selection-end-line="101" selection-end-column="30" />
+        <state relative-caret-position="180">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
