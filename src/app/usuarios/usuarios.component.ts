@@ -11,6 +11,7 @@ import {TokenService} from '../services/token/token.service';
 })
 export class UsuariosComponent implements OnInit {
     getService;
+    showSpinner;
     usuarios;
     access_token;
     tokenService;
@@ -45,6 +46,7 @@ export class UsuariosComponent implements OnInit {
         this.deleteOpen = false;
         this.confirmaDelete = false;
         this.getUsuarios();
+        this.showSpinner = true;
     }
 
 
@@ -149,6 +151,7 @@ export class UsuariosComponent implements OnInit {
         //     data => {
         //         console.log(data.access_token);
         //         this.access_token = data.access_token;
+        this.showSpinner = true;
                 this.getService.getUsuarios(this.access_token).subscribe(
                     datain => {
                         console.log(datain.status);
@@ -159,13 +162,11 @@ export class UsuariosComponent implements OnInit {
                             console.log(datain);
                             this.usuarios = datain;
                         }
+                        this.showSpinner = false;
                     },
                     errorin => {
-                        if (errorin.status === 200) {
-                            console.log(errorin);
-                        } else {
-                            console.log(errorin);
-                        }
+                        console.log(errorin);
+                        this.showSpinner = false;
                     }
                 );
         //     } ,
@@ -180,15 +181,18 @@ export class UsuariosComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
                 this.getService.updateUsuario(usuario, this.access_token).subscribe(
                     data => {
                         console.log(data.status);
                         this.usuarios = data;
                         this.statusApi = 1;
+                        this.showSpinner = false
                     },
                     error => {
                         console.log(error);
                         this.statusApi = 2;
+                        this.showSpinner = false
                     }
                 );
         //     } ,
@@ -203,15 +207,18 @@ export class UsuariosComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
                 this.getService.createUsuario(usuario, this.access_token).subscribe(
                     data => {
                         console.log(data.status);
                         this.usuarios = data;
                         this.statusApi = 1;
+                        this.showSpinner = false;
                     },
                     error => {
                         console.log(error);
                         this.statusApi = 2;
+                        this.showSpinner = false;
                     }
                 );
         //     } ,

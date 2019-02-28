@@ -2,7 +2,7 @@
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<div *ngIf="visualizacao()" class="limiter">
+<div *ngIf="visualizacao()" [ng2-loading]="showSpinner" class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="col-md-14">
@@ -19,7 +19,6 @@
                         <tr class="row100 head">
                             <th class="cell100 column1">Usuário</th>
                             <th class="cell100 column2">Email</th>
-                            <th class="cell100 column3">Criação</th>
                             <th class="cell100 column4">Ações</th>
                         </tr>
                         </thead>
@@ -32,7 +31,6 @@
                         <tr *ngFor="let usuario of usuarios| filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
                             <td class="cell100 column1">{{usuario.nome}}</td>
                             <td class="cell100 column2">{{usuario.email}}</td>
-                            <td class="cell100 column3">{{usuario.createdAt}}</td>
                             <td class="cell100 column4"><a (click)="openEditar(usuario)">Editar</a>   |   <a (click)="openDelete(usuario)">Excluir</a></td>
                         </tr>
                         </tbody>
@@ -58,7 +56,7 @@
 
 
 
-<div *ngIf="updateUsuario()" class="home">
+<div *ngIf="updateUsuario()" [ng2-loading]="showSpinner" class="home">
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
@@ -127,7 +125,7 @@
 
 
 
-<div *ngIf="createUsuario()" class="home">
+<div *ngIf="createUsuario()" [ng2-loading]="showSpinner" class="home">
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
@@ -193,7 +191,7 @@
 </div>
 
 
-<div *ngIf="deleteUsuario()" class="home">
+<div *ngIf="deleteUsuario()" [ng2-loading]="showSpinner" class="home">
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>

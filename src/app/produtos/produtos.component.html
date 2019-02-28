@@ -2,7 +2,7 @@
 <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<div *ngIf="visualizacao()" class="limiter">
+<div *ngIf="visualizacao()" [ng2-loading]="showSpinner" class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="col-md-14">
@@ -41,7 +41,7 @@
 </div>
 
 
-<div *ngIf="updateProduto()" class="home">
+<div *ngIf="updateProduto()"[ng2-loading]="showSpinner" class="home">
   <div class="container">
     <div class="row">
       <div class="col-md-2"></div>
@@ -96,7 +96,7 @@
 </div>
 
 
-<div *ngIf="createProduto()" class="home">
+<div *ngIf="createProduto()" [ng2-loading]="showSpinner" class="home">
   <div class="container">
     <div class="row">
       <div class="col-md-2"></div>
@@ -151,7 +151,7 @@
 </div>
 
 
-<div *ngIf="deleteProduto()" class="home">
+<div *ngIf="deleteProduto()" [ng2-loading]="showSpinner" class="home">
   <div class="container">
     <div class="row">
       <div class="col-md-2"></div>

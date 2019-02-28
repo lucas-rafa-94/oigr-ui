@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2LoadingSpinnerModule } from 'ng2-loading-spinner'
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import 'hammerjs';
@@ -45,6 +46,7 @@ import 'hammerjs';
       BrowserModule,
       BrowserAnimationsModule,
       DropDownsModule,
+      Ng2LoadingSpinnerModule.forRoot({}),
       FormsModule, NgbModule.forRoot(),
       RouterModule.forRoot([
       { path: 'login', component: LoginComponent},

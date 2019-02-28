@@ -14,6 +14,7 @@ export class ProdutosComponent implements OnInit {
     produtos = [];
     access_token;
     tokenService;
+    showSpinner;
     statusApi = 0;
     produtoSelecionado = {
         nome: '',
@@ -39,6 +40,7 @@ export class ProdutosComponent implements OnInit {
       this.criaOrUpdateOpen = false;
       this.createOpen = false;
       this.deleteOpen = false;
+      this.showSpinner = true;
   }
 
     visualizacao() {
@@ -83,7 +85,11 @@ export class ProdutosComponent implements OnInit {
     }
 
     createClose() {
-        this.statusApi = 0
+        this.statusApi = 0;
+        this.produtoSelecionado = {
+            nome: '',
+            createdAt: ''
+        };
         this.getProdutosService();
         this.criaOrUpdateOpen = false;
         this.createOpen = false;
@@ -126,6 +132,7 @@ export class ProdutosComponent implements OnInit {
 
 
     getProdutosService() {
+        this.showSpinner = true;
         this.produtos = [];
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
@@ -143,6 +150,7 @@ export class ProdutosComponent implements OnInit {
                                 this.produtos.push(produto);
                             }
                             console.log(data[1][1]);
+                            this.showSpinner = false;
                         } else {
                             for (var i = 0; i < data.length ; i++){
                                 var produto = {
@@ -153,14 +161,12 @@ export class ProdutosComponent implements OnInit {
                                 }
                                 this.produtos.push(produto);
                             }
+                            this.showSpinner = false;
                         }
                     },
                     error => {
-                        if (error.status === 200) {
-                            console.log(error);
-                        } else {
-                            console.log(error);
-                        }
+                        console.log(error)
+                        this.showSpinner = false;
                     }
                 );
             }
@@ -175,6 +181,7 @@ export class ProdutosComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
                 this.getService.updateProduto(produto, this.access_token).subscribe(
                     data => {
                         console.log(data.status);
@@ -187,13 +194,11 @@ export class ProdutosComponent implements OnInit {
                             this.produtos = data;
                             this.statusApi = 1;
                         }
+                        this.showSpinner = false;
                     },
                     error => {
-                        if (error.status === 200) {
-                            console.log(error);
-                        } else {
-                            console.log(error);
-                        }
+                        this.statusApi = 1;
+                        this.showSpinner = false;
                     }
                 );
             }
@@ -204,10 +209,8 @@ export class ProdutosComponent implements OnInit {
     // }
 
     createProdutoAcao(produto){
-        this.produtoSelecionado = {
-            nome: '',
-            createdAt: ''
-        };
+
+        this.showSpinner = true;
 
         if(produto.nome !== '' && produto.categoriaCommerceId !== '' ){
             // this.tokenService.getToken().subscribe(
@@ -222,6 +225,7 @@ export class ProdutosComponent implements OnInit {
                     }else{
                         this.statusApi = 1;
                     }
+                    this.showSpinner = false;
                 },
                 error => {
                     if (error.status === 200) {
@@ -230,10 +234,12 @@ export class ProdutosComponent implements OnInit {
                     } else {
                         console.log(error);
                     }
+                    this.showSpinner = false;
                 }
             );
         }else{
             this.statusApi = 2;
+            this.showSpinner = false;
         }
         //         errorToken => {
         //             console.log(errorToken);

@@ -2,7 +2,7 @@
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<div *ngIf="visualizacao()" class="limiter">
+<div *ngIf="visualizacao()" [ng2-loading]="showSpinner" class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="col-md-14">
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <select class='select-option' required [(ngModel)]='cidadeSelecionado.dddId' name="dddId" (ngModelChange)='onDddSelected($event)'>
-                                <option class='option' *ngFor='let ddd of ddds' [value]="ddd">{{ddd}}</option>
+                                <option class='option' *ngFor='let ddd of ddds' [value]="ddd[1]">{{ddd[0]}}</option>
                             </select>
                         </div>
                     </div>

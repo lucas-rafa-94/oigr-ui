@@ -17,6 +17,7 @@ export class CidadesComponent implements OnInit {
     access_token;
     tokenService;
     estadoSelecionado;
+    showSpinner;
     dddSelecionado;
     statusApi = 0;
     getEstados;
@@ -45,6 +46,7 @@ export class CidadesComponent implements OnInit {
       this.criaOrUpdateOpen = false;
       this.createOpen = false;
       this.deleteOpen = false
+      this.showSpinner = true;
   }
 
   ngOnInit() {
@@ -211,6 +213,8 @@ export class CidadesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
+
                 this.getService.getCidades(this.access_token).subscribe(
                     data => {
                         console.log(data[0]);
@@ -224,13 +228,11 @@ export class CidadesComponent implements OnInit {
                             }
                             this.cidades.push(cidade);
                         }
+                        this.showSpinner = false;
                     },
                     error => {
-                        if (error.status === 200) {
-                            console.log(error);
-                        } else {
-                            console.log(error);
-                        }
+                        console.log(error)
+                        this.showSpinner = false;
                     }
                 );
         //     } ,
@@ -245,11 +247,14 @@ export class CidadesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+                this.showSpinner = true;
                 this.getService.updateCidade(cidade, this.access_token).subscribe(
                     data => {
+                        this.showSpinner = false;
                         this.statusApi = 1;
                     },
                     error => {
+                        this.showSpinner = false;
                         this.statusApi = 2;
                     }
                 );
@@ -265,12 +270,15 @@ export class CidadesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
                 this.getService.createCidade(cidade, this.access_token).subscribe(
                     data => {
+                            this.showSpinner = false;
                             this.cidades = data;
                             this.statusApi = 1;
                     },
                     error => {
+                        this.showSpinner = false;
                         this.statusApi = 2;
                     }
                 );
