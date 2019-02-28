@@ -25,6 +25,7 @@ export class RegioesComponent implements OnInit {
     valueEstados: any = [];
     estados = [];
     produtos = [];
+    mensagem;
     getService;
     deleteOpen;
     statusApi = 0;
@@ -396,7 +397,6 @@ export class RegioesComponent implements OnInit {
         this.valueCidades = [];
         this.valueEstados = [];
         this.listCidades = [];
-        this.listDdds = [];
         this.listEstados = [];
         this.statusApi = 0;
         this.criaOrUpdateOpen = false;
@@ -516,7 +516,9 @@ export class RegioesComponent implements OnInit {
                         id: data[i][1]
                     }
                     this.listDdds.push(ddd);
-                    this.getService.getRegioesByDdd(regiao.id, this.access_token).subscribe(
+
+                }
+                this.getService.getRegioesByDdd(regiao.id, this.access_token).subscribe(
                         dataIn => {
                             console.log(dataIn);
                             this.valueDdds = dataIn;
@@ -529,9 +531,8 @@ export class RegioesComponent implements OnInit {
                             }
                         }
                     );
-                }
                 console.log(this.listDdds);
-            },
+                },
             error => {
                 if (error.status === 200) {
                     console.log(error);
@@ -644,6 +645,7 @@ export class RegioesComponent implements OnInit {
         //         this.access_token = dataToken.access_token;
         this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
             data => {
+                // this.getRegioesApi();
                 this.statusApi = 1;
             },
             error => {
@@ -677,7 +679,7 @@ export class RegioesComponent implements OnInit {
             regiao.listArt = arrayDdds;
         }
         console.log(regiao);
-        regiao.status = 'Ativo';
+        regiao.status = 'Rascunho';
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
@@ -685,14 +687,14 @@ export class RegioesComponent implements OnInit {
         this.getService.updateRegioes(regiao, this.access_token).subscribe(
             data => {
                 if (data.id === 200){
-                    this.regioes = data;
                     this.statusApi = 1;
                 }else {
-                    this.regioes = data;
+                    this.mensagem = data.status;
                     this.statusApi = 2;
                 }
             },
             error => {
+                this.mensagem = "Erro ao realizar a operação.";
                 console.log(error);
                 this.statusApi = 2;
             }
@@ -711,7 +713,7 @@ export class RegioesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-                this.getService.deleteRegiao(regiao.id, this.access_token).subscribe(
+                this.getService.deleteRegiao(regiao.id, regiao.nome, this.access_token).subscribe(
                     data => {
                         this.getRegioesApi();
                         this.deleteClose();
@@ -754,15 +756,15 @@ export class RegioesComponent implements OnInit {
                 this.getService.createRegioes(regiao, this.access_token).subscribe(
                     data => {
                         if (data.id === 200){
-                            this.regioes = data;
                             this.statusApi = 1;
                         }else {
-                            this.regioes = data;
+                            this.mensagem = data.status;
                             this.statusApi = 2;
                         }
                     },
                     error => {
                         console.log(error);
+                        this.mensagem = "Erro ao realizar a operação."
                         this.statusApi = 2;
                     }
                 );

@@ -92,17 +92,17 @@
                 </div>
                 <br>
                 <form>
-                    <!--<div>-->
-                        <!--<p class="lead">Produtos</p>-->
-                        <!--<hr class="my-4">-->
-                    <!--</div>-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-md-12">-->
-                            <!--<select class='select-option' required [(ngModel)]='regiaoSelecionado.tipoProdutoId' name="produtoId" (ngModelChange)='onProdutoSelected($event)'>-->
-                                <!--<option class='option' *ngFor='let produto of produtos' [value]="produto.id">{{produto.nome}}</option>-->
-                            <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                    <div>
+                        <p class="lead">Produtos</p>
+                        <hr class="my-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class='select-option' required [(ngModel)]='regiaoSelecionado.tipoProdutoId' name="produtoId" (ngModelChange)='onProdutoSelected($event)'>
+                                <option [disabled]="produto.nome" class='option' *ngFor='let produto of produtos' [value]="produto.id">{{produto.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
                     <hr class="my-4">
                     <br>
                     <div>
@@ -162,8 +162,8 @@
                             <kendo-multiselect id="updateMultiSelectDddUpdate" name="updateMultiSelectDddUpdate"
                                                [data]="listDdds"
                                                [(ngModel)]="valueDdds"
-                                               [textField]="'id'"
-                                               [valueField]="'value'"
+                                               [textField]="'value'"
+                                               [valueField]="'id'"
                             ></kendo-multiselect>
                         </div>
                         <div class="form-check">
@@ -248,7 +248,7 @@
                         <strong>{{regiaoSelecionado.nome}}</strong> atualizado com sucesso.
                     </div>
                     <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
-                        <strong>{{regiaoSelecionado.nome}}</strong> atualizado com falha.
+                        <strong>{{this.mensagem}}</strong>.
                     </div>
                 </form>
             </div>
@@ -428,7 +428,7 @@
                         <strong>{{regiaoSelecionado.nome}}</strong> criado com sucesso.
                     </div>
                     <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
-                        <strong>{{regiaoSelecionado.nome}}</strong> criado com falha.
+                        <strong>{{this.mensagem}}</strong>.
                     </div>
                 </form>
             </div>
