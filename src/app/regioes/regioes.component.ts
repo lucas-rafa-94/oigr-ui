@@ -39,6 +39,7 @@ export class RegioesComponent implements OnInit {
     regiaoMacroEscolhido;
     valueDdds: any = [];
     valueCidades: any = [];
+    valueRegiaoMacro: any = [];
     showSpinner;
     msgDelete = '';
     regiaoSelecionado = {
@@ -274,6 +275,40 @@ export class RegioesComponent implements OnInit {
     //     );
     // }
 
+
+    getRegiaoMacroApi() {
+        // this.tokenService.getToken().subscribe(
+        //     dataToken => {
+        //         console.log(dataToken.access_token);
+        //         this.access_token = dataToken.access_token;
+        this.helperService.getRegiaoMacro(this.access_token).subscribe(
+            data => {
+                console.log(data);
+                for (var i = 0; i < data.length ; i++){
+                    var regiaoMacro = {
+                        nome: data[i].nome,
+                        id: data[i].id
+                    }
+                    this.listRegiaoMacro.push(regiaoMacro);
+                }
+
+                console.log(this.listRegiaoMacro);
+            },
+            error => {
+                if (error.status === 200) {
+                    console.log(error);
+                } else {
+                    console.log(error);
+                }
+            }
+        );
+    }
+    //         errorToken => {
+    //             console.log(errorToken);
+    //         }
+    //     );
+    // }
+
     ufShown(){
         if(this.ufEscolhido) {
             return true;
@@ -375,6 +410,7 @@ export class RegioesComponent implements OnInit {
     }
 
     regiaoMacroCheck(){
+        this.getRegiaoMacroApi();
         this.dddEscolhido = false;
         this.ufEscolhido = false;
         this.regiaoMacroEscolhido = true;
@@ -412,6 +448,8 @@ export class RegioesComponent implements OnInit {
         this.valueEstados = [];
         this.listCidades = [];
         this.listEstados = [];
+        this.valueRegiaoMacro = [];
+        this.listRegiaoMacro = [];
         this.statusApi = 0;
         this.criaOrUpdateOpen = false;
         this.createOpen = false;
@@ -421,6 +459,8 @@ export class RegioesComponent implements OnInit {
     }
 
     createClose() {
+        this.valueRegiaoMacro = [];
+        this.listRegiaoMacro = [];
         this.statusApi = 0;
         this.listDdds = [];
         this.valueDdds = [];
@@ -448,11 +488,18 @@ export class RegioesComponent implements OnInit {
         if(regiao.tipoCadastro === 'DDD'){
             this.dddEscolhido = true;
             this.ufEscolhido = false;
+            this.regiaoMacroEscolhido = false;
             this.getRegioesApiByDdd(regiao);
         }else if (regiao.tipoCadastro === 'UF'){
             this.ufEscolhido = true;
             this.dddEscolhido = false;
+            this.regiaoMacroEscolhido = false;
             this.getEstadosCidadesApiByRegiao(regiao);
+        }else if (regiao.tipoCadastro === 'RM'){
+            this.ufEscolhido = false;
+            this.dddEscolhido = false;
+            this.regiaoMacroEscolhido = true;
+            this.getRegioesApiByRegiao(regiao);
         }
 
     }
@@ -549,7 +596,50 @@ export class RegioesComponent implements OnInit {
             },
             error => {
                 this.showSpinner = false;
-                console.log(error)
+                console.log(error);
+            }
+        );
+        //     } ,
+        //     errorToken => {
+        //         console.log(errorToken);
+        //     }
+        // );
+    }
+
+
+    getRegioesApiByRegiao(regiao) {
+        // this.tokenService.getToken().subscribe(
+        //     dataToken => {
+        //         console.log(dataToken.access_token);
+        //         this.access_token = dataToken.access_token;
+        this.showSpinner = true;
+        this.helperService.getRegiaoMacro(this.access_token).subscribe(
+            data => {
+                for (var i = 0; i < data.length ; i++){
+                    var regiaoMacro = {
+                        nome: data[i].nome,
+                        id: data[i].id
+                    }
+                    this.listRegiaoMacro.push(regiaoMacro);
+
+                }
+                this.getService.getRegioesByRegiaoMestre(regiao.id, this.access_token).subscribe(
+                    dataIn => {
+
+                        console.log(dataIn);
+                        this.valueRegiaoMacro = dataIn;
+                        this.showSpinner = false;
+                    },
+                    errorIn => {
+                        console.log(errorIn);
+                        this.showSpinner = false;
+                    }
+                );
+                console.log(this.listRegiaoMacro);
+            },
+            error => {
+                this.showSpinner = false;
+                console.log(error);
             }
         );
         //     } ,
@@ -693,6 +783,14 @@ export class RegioesComponent implements OnInit {
             }
             regiao.listArt = arrayDdds;
         }
+        if(this.regiaoMacroShown()){
+            regiao.tipoCadastro = 'RM';
+            let regiaoMacro = [];
+            for(let i = 0; i < this.valueRegiaoMacro.length; i++){
+                regiaoMacro.push(this.valueRegiaoMacro[i].id);
+            }
+            regiao.listArt = regiaoMacro;
+        }
         console.log(regiao);
         regiao.status = 'Rascunho';
         // this.tokenService.getToken().subscribe(
@@ -730,16 +828,29 @@ export class RegioesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
-        this.getService.deleteRegiao(regiao.id, regiao.nome, this.access_token).subscribe(
-            data => {
-                this.getRegioesApi();
-                this.deleteClose();
-            },
-            error => {
-                console.log(error);
-                this.statusApi = 2;
-            }
-        );
+        if(regiao.status === 'Ativo'){
+            this.getService.deleteRegiaoPublicada(regiao.id, this.access_token).subscribe(
+                data => {
+                    this.getRegioesApi();
+                    this.deleteClose();
+                },
+                error => {
+                    console.log(error);
+                    this.statusApi = 2;
+                }
+            );
+        }else {
+            this.getService.deleteRegiao(regiao.id, regiao.nome, this.access_token).subscribe(
+                data => {
+                    this.getRegioesApi();
+                    this.deleteClose();
+                },
+                error => {
+                    console.log(error);
+                    this.statusApi = 2;
+                }
+            );
+        }
         //     } ,
         //     errorToken => {
         //         console.log(errorToken);
@@ -765,6 +876,14 @@ export class RegioesComponent implements OnInit {
                 arrayDdds.push(this.valueDdds[i].id);
             }
             regiao.listArt = arrayDdds;
+        }
+        if(this.regiaoMacroShown()){
+            regiao.tipoCadastro = 'RM';
+            let regiaoMacro = [];
+            for(let i = 0; i < this.valueRegiaoMacro.length; i++){
+                regiaoMacro.push(this.valueRegiaoMacro[i].id);
+            }
+            regiao.listArt = regiaoMacro;
         }
         console.log(regiao);
         // this.tokenService.getToken().subscribe(

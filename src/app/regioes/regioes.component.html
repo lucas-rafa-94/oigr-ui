@@ -230,11 +230,12 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectRegiao"
+                            <kendo-multiselect id="RegiaoMestre"
+                                               name="updatemultiSelectRegiaoMestre"
                                                [data]="listRegiaoMacro"
-                                               [(ngModel)]="value"
-                                               [textField]="'text'"
-                                               [valueField]="'value'"
+                                               [(ngModel)]="valueRegiaoMacro"
+                                               [textField]="'nome'"
+                                               [valueField]="'id'"
                             ></kendo-multiselect>
                         </div>
                     </div>
@@ -329,7 +330,7 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" (click)="regiaoMacroCheck()" id="exampleRadios3" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
+                        <label class="form-check-label" for="exampleRadios3">
                             Região Macro
                         </label>
                     </div>
@@ -412,11 +413,13 @@
                             <hr class="my-4">
                         </div>
                         <div class="example-wrapper">
-                            <kendo-multiselect name="multiSelectRegiao"
+                            <kendo-multiselect
+                                            id="createmultiSelectRegiaoMacroId"
+                                            name="multiSelectRegiao"
                                                [data]="listRegiaoMacro"
-                                               [(ngModel)]="value"
-                                               [textField]="'text'"
-                                               [valueField]="'value'"
+                                               [(ngModel)]="valueRegiaoMacro"
+                                               [textField]="'nome'"
+                                               [valueField]="'id'"
                             ></kendo-multiselect>
                         </div>
                     </div>
