@@ -21,8 +21,9 @@ import {CidadesComponent} from './cidades/cidades.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Ng2LoadingSpinnerModule } from 'ng2-loading-spinner'
+import { Ng2LoadingSpinnerModule } from 'ng2-loading-spinner';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import 'hammerjs';
@@ -53,8 +54,7 @@ import 'hammerjs';
       { path: 'regioes', component: RegioesComponent},
       { path: 'produtos', component: ProdutosComponent},
       { path: 'usuarios', component: UsuariosComponent},
-      { path: 'cidades', component: CidadesComponent}
-    ])
+      { path: 'cidades', component: CidadesComponent} ])
 
   ],
   providers: [LoginInService, ProdutoService, EstadosDddService, CidadeService, RegiaoUserService, TokenService],

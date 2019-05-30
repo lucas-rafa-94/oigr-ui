@@ -57,13 +57,13 @@ export class RegioesComponent implements OnInit {
     confirmaDelete;
     p: number = 1;
 
-    getTokenSession() {
-        if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
-            this.router.navigate(['']);
-        }
-    }
+    // getTokenSession() {
+    //     if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
+    //         this.router.navigate(['']);
+    //     }
+    // }
     constructor(private router: Router, service: RegiaoUserService , assetsService: EstadosDddService, cidadeService: CidadeService, produtoService: ProdutoService, private modalService: NgbModal, tokenService: TokenService) {
-        this.getTokenSession();
+        // this.getTokenSession();
         this.tokenService = tokenService;
         this.getServiceProduto = produtoService;
         this.getService = service;

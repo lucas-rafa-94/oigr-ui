@@ -26,13 +26,13 @@ export class ProdutosComponent implements OnInit {
     createOpen;
     p: number = 1;
 
-  getTokenSession() {
-    if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
-      this.router.navigate(['']);
-    }
-  }
+  // getTokenSession() {
+  //   if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
+  //     this.router.navigate(['']);
+  //   }
+  // }
   constructor(private router: Router, service: ProdutoService, tokenService: TokenService) {
-      this.getTokenSession();
+      // this.getTokenSession();
       this.tokenService = tokenService;
       this.getService = service;
       this.getProdutosService();
