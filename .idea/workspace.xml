@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6348538d-5960-4b4e-8602-585cd51a68a0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/3rdpartylicenses.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/inline.318b50c57b4eba3d437b.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.a26d84b7f7336d3373f7.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/polyfills.194f3db5c95bb635c66b.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/styles.50c02adbf22bcfb24c90.bundle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regioes/regioes.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regioes/regioes.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regioes/regioes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regioes/regioes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" afterDir="false" />
@@ -74,7 +84,7 @@
     <session id="1264511705">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="28" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.14" value="1" />
@@ -95,48 +105,49 @@
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.84" value="1" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="Angular2LanguageService" value="28" />
-          <entry key="TsLintLanguageService" value="24" />
+          <entry key="Angular2LanguageService" value="29" />
+          <entry key="TsLintLanguageService" value="25" />
           <entry key="TypeScriptServerServiceImpl" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="61" />
-          <entry key="html" value="1106" />
+          <entry key="css" value="63" />
+          <entry key="html" value="1143" />
           <entry key="json" value="39" />
-          <entry key="ts" value="3907" />
+          <entry key="ts" value="4121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="61" />
-          <entry key="HTML" value="1104" />
+          <entry key="CSS" value="63" />
+          <entry key="HTML" value="1141" />
           <entry key="JSON" value="39" />
           <entry key="JavaScript" value="2" />
-          <entry key="TypeScript" value="3907" />
+          <entry key="TypeScript" value="4121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
+          <entry key="css" value="8" />
           <entry key="html" value="17" />
-          <entry key="json" value="3" />
+          <entry key="json" value="4" />
           <entry key="ts" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
+          <entry key="CSS" value="8" />
           <entry key="HTML" value="17" />
-          <entry key="JSON" value="3" />
+          <entry key="JSON" value="4" />
           <entry key="TypeScript" value="40" />
         </counts>
       </usages-collector>
@@ -150,8 +161,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="746" column="38" selection-start-line="746" selection-start-column="38" selection-end-line="746" selection-end-column="38" />
+            <state relative-caret-position="3033">
+              <caret line="766" column="36" lean-forward="true" selection-start-line="766" selection-start-column="36" selection-end-line="766" selection-end-column="36" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -162,17 +173,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="65" lean-forward="true" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+            <state relative-caret-position="419">
+              <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="252" column="1" lean-forward="true" selection-start-line="252" selection-start-column="1" selection-end-line="252" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="671">
+              <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="30" column="76" lean-forward="true" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
+              <caret line="30" column="76" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -187,28 +216,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/cidades/cidades.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/cidades/cidades.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="104" selection-start-line="85" selection-start-column="104" selection-end-line="85" selection-end-column="104" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="92" />
+            <state relative-caret-position="98">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -216,8 +227,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/produto/produto.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="180">
+              <caret line="14" column="49" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -225,8 +236,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="75">
+              <caret line="7" column="49" selection-start-line="7" selection-end-line="7" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -234,8 +245,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+            <state relative-caret-position="289">
+              <caret line="154" column="4" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -251,7 +262,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>openEdi</find>
       <find>publica</find>
       <find>valueCidades</find>
       <find>estado</find>
@@ -281,6 +291,7 @@
       <find>DDD</find>
       <find>RM</find>
       <find>this.listRegiaoMacro.push</find>
+      <find>column</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -354,7 +365,6 @@
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.css" />
         <option value="$PROJECT_DIR$/src/app/usuarios/usuarios.component.css" />
         <option value="$PROJECT_DIR$/src/app/cidades/cidades.component.css" />
-        <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.css" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.html" />
@@ -363,13 +373,14 @@
         <option value="$PROJECT_DIR$/src/app/produtos/produtos.component.ts" />
         <option value="$PROJECT_DIR$/src/app/cidades/cidades.component.ts" />
         <option value="$PROJECT_DIR$/src/app/cidades/cidades.component.html" />
+        <option value="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" />
         <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.ts" />
         <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.html" />
-        <option value="$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/produto/produto.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/regioes/regioes.component.css" />
       </list>
     </option>
   </component>
@@ -388,10 +399,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="53" />
-    <option name="y" value="23" />
-    <option name="width" value="1627" />
-    <option name="height" value="1027" />
+    <option name="x" value="37" />
+    <option name="y" value="39" />
+    <option name="width" value="1646" />
+    <option name="height" value="1002" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -439,47 +450,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="cidade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oigr-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oigr-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="estadosDdd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oigr-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oigr-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="loginIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oigr-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oigr-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="produto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oigr-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oigr-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
               <item name="regiaoUser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oigr-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oigr-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="token" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -665,12 +636,13 @@
       <workItem from="1555526220943" duration="2385000" />
       <workItem from="1556826995332" duration="108000" />
       <workItem from="1556827374808" duration="32000" />
-      <workItem from="1558531532005" duration="9475000" />
+      <workItem from="1558531532005" duration="10282000" />
+      <workItem from="1559177770365" duration="8350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385578000" />
+    <option name="totallyTimeSpent" value="394735000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -685,7 +657,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.32722834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8108974" visible="true" weight="0.33089134" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -816,13 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10095">
-          <caret line="673" column="1" selection-start-line="673" selection-start-column="1" selection-end-line="673" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -868,13 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="47" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -937,20 +895,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="65" lean-forward="true" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+        <state relative-caret-position="420">
+          <caret line="30" column="76" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="746" column="38" selection-start-line="746" selection-start-column="38" selection-end-line="746" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="98">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="49" selection-start-line="7" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/produto/produto.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -961,38 +930,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/produto/produto.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/regiaoUser/regiaoUser.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        <state relative-caret-position="289">
+          <caret line="154" column="4" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/loginIn/login-in.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="3033">
+          <caret line="766" column="36" lean-forward="true" selection-start-line="766" selection-start-column="36" selection-end-line="766" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/estadosDdd/estadosDdd.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="92" />
+        <state relative-caret-position="419">
+          <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/cidade/cidade.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/regioes/regioes.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="76" lean-forward="true" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
+        <state relative-caret-position="187">
+          <caret line="252" column="1" lean-forward="true" selection-start-line="252" selection-start-column="1" selection-end-line="252" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
         </state>
       </provider>
     </entry>

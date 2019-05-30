@@ -152,6 +152,14 @@ export class RegioesComponent implements OnInit {
         }
     }
 
+    notDelete(status){
+        if(status === 'Excluir'){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     getMissingCidades(){
         this.showSpinner = true;
         this.getService.getCidadesMissing().subscribe(
@@ -731,6 +739,18 @@ export class RegioesComponent implements OnInit {
         for(let i = 0; i < this.regioes.length; i++){
             if(this.regioes[i].publicar && this.regioes[i].status === 'Rascunho'){
                 let regiaoPublicada = {
+                    status: this.regioes[i].status,
+                    produto: this.regioes[i].tipoProdutoId,
+                    id: this.regioes[i].id,
+                    nome: this.regioes[i].nome,
+                    regiaoId : this.regioes[i].id,
+                    createdAt : this.regioes[i].createdAt
+                };
+                arrayPublicaRegioes.push(regiaoPublicada);
+            } else if (this.regioes[i].publicar && this.regioes[i].status === 'Excluir'){
+                let regiaoPublicada = {
+                    status: this.regioes[i].status,
+                    produto: this.regioes[i].tipoProdutoId,
                     id: this.regioes[i].id,
                     nome: this.regioes[i].nome,
                     regiaoId : this.regioes[i].id,
@@ -766,7 +786,7 @@ export class RegioesComponent implements OnInit {
 
     updateRegiaoAcao(regiao){
         this.showSpinner = true;
-        regiao.createdAt = '2018-10-16'
+        // regiao.createdAt = '2018-10-16'
         if (this.ufShown()){
             let arrayCidades = [];
             regiao.tipoCadastro = 'UF';
@@ -792,7 +812,9 @@ export class RegioesComponent implements OnInit {
             regiao.listArt = regiaoMacro;
         }
         console.log(regiao);
+
         regiao.status = 'Rascunho';
+
         // this.tokenService.getToken().subscribe(
         //     dataToken => {
         //         console.log(dataToken.access_token);
@@ -828,8 +850,10 @@ export class RegioesComponent implements OnInit {
         //     dataToken => {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
+        console.log(regiao);
         if(regiao.status === 'Ativo'){
-            this.getService.deleteRegiaoPublicada(regiao.id, this.access_token).subscribe(
+            regiao.status = 'Excluir';
+            this.getService.updateRegiaoDelete(regiao, this.access_token).subscribe(
                 data => {
                     this.getRegioesApi();
                     this.deleteClose();
@@ -837,8 +861,7 @@ export class RegioesComponent implements OnInit {
                 error => {
                     console.log(error);
                     this.statusApi = 2;
-                }
-            );
+                })
         }else {
             this.getService.deleteRegiao(regiao.id, regiao.nome, this.access_token).subscribe(
                 data => {

@@ -9,16 +9,16 @@
                 <button type="button" openCreate (click)="openCreate()" id="create" class="btn btn-block btn-primary">Nova Região</button>
             </div>
             <div class="col-md-14">
-                <button type="button" openCreate (click)="publicaRegioes()" id="create" class="btn btn-block btn-info">Publicar Regiões</button>
+                <button type="button" openCreate (click)="publicaRegioes()" id="create" class="btn btn-block btn-info">Publicar | Excluir Regiões</button>
             </div>
             <div *ngFor="let produto of listMissingCidades" class="alert alert-danger alert-dismissible" role="alert">
                 <strong>{{produto.nome}}</strong> - Ainda faltam <strong>{{produto.values}}</strong> cidades para serem associadas ao produto.
             </div>
             <div *ngIf="submitSucesso()" id="submitSucesso" class="alert alert-success" role="alert">
-                <strong>Regiões Publicadas com sucesso</strong>.
+                <strong>Regiões Publicadas | Excluídas com sucesso</strong>.
             </div>
             <div *ngIf="submitFalha()" id="submitFalha" class="alert alert-danger alert-dismissible" role="alert">
-                <strong>Regiões Publicadas com falha</strong>.
+                <strong>Regiões Publicadas | Excluídas com falha</strong>.
             </div>
             <div class="inner-addon right-addon">
                 <i class="glyphicon glyphicon-search"></i>
@@ -44,13 +44,13 @@
                     <table>
                         <tbody>
                         <tr *ngFor="let regiao of regioes| filter:nome | paginate: { itemsPerPage: 5, currentPage: p };" class="row100 body">
-                            <td class="cell100 column1">{{regiao.nome.substring(0, 24)}}</td>
+                            <td class="cell100 column1">{{regiao.nome}}</td>
                             <td class="cell100 column3">{{regiao.nomeProduto}}</td>
                             <td class="cell100 column3">{{regiao.status}}</td>
                             <td class="cell100 column3">{{regiao.createdAt}}</td>
                             <td *ngIf="ativo(regiao.status)" class="cell100 column3"><input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="regiao.publicar" (click)="checkRegioes(regioes, regiao.id)"></td>
                             <td *ngIf="notAtivo(regiao.status)" class="cell100 column3"></td>
-                            <td class="cell100 column4"><a (click)="openEditar(regiao)">Editar</a>   |   <a (click)="openDelete(regiao)">Excluir</a></td>
+                            <td  class="cell100 column4"><a *ngIf="notDelete(regiao.status)" (click)="openEditar(regiao)">Editar   |   </a><a *ngIf="notDelete(regiao.status)" (click)="openDelete(regiao)">Excluir</a></td>
                         </tr>
                         </tbody>
                         <pagination-controls (pageChange)="p = $event"></pagination-controls>
