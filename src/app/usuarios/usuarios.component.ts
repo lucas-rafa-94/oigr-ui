@@ -30,14 +30,14 @@ export class UsuariosComponent implements OnInit {
     confirmaDelete;
     p: number = 1;
 
-    // getTokenSession() {
-    //     if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
-    //         this.router.navigate(['']);
-    //     }
-    // }
+    getTokenSession() {
+        if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
+            this.router.navigate(['']);
+        }
+    }
 
     constructor(private router: Router, service: RegiaoUserService , private modalService: NgbModal, tokenService: TokenService) {
-        // this.getTokenSession();
+        this.getTokenSession();
         this.getService = service;
         this.tokenService = tokenService;
         this.visualizacaoOpen = true;

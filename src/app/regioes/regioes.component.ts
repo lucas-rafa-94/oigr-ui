@@ -57,13 +57,13 @@ export class RegioesComponent implements OnInit {
     confirmaDelete;
     p: number = 1;
 
-    // getTokenSession() {
-    //     if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
-    //         this.router.navigate(['']);
-    //     }
-    // }
+    getTokenSession() {
+        if (!localStorage.getItem('currentToken') || localStorage.getItem('currentToken') === '') {
+            this.router.navigate(['']);
+        }
+    }
     constructor(private router: Router, service: RegiaoUserService , assetsService: EstadosDddService, cidadeService: CidadeService, produtoService: ProdutoService, private modalService: NgbModal, tokenService: TokenService) {
-        // this.getTokenSession();
+        this.getTokenSession();
         this.tokenService = tokenService;
         this.getServiceProduto = produtoService;
         this.getService = service;
@@ -766,10 +766,22 @@ export class RegioesComponent implements OnInit {
         //         this.access_token = dataToken.access_token;
         this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
             data => {
+                this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
+                    data2 => {
 
-                this.statusApi = 1;
-                this.showSpinner = false;
-                this.getRegioesApi();
+                        this.statusApi = 1;
+                        this.showSpinner = false;
+                        this.getRegioesApi();
+                    },
+                    error => {
+                        this.statusApi = 2;
+                        this.showSpinner = false;
+                        console.log(error);
+                    }
+                );
+                // this.statusApi = 1;
+                // this.showSpinner = false;
+                // this.getRegioesApi();
             },
             error => {
                 this.statusApi = 2;
@@ -863,7 +875,7 @@ export class RegioesComponent implements OnInit {
                     this.statusApi = 2;
                 })
 
-        this.getRegioesApi();
+        // this.getRegioesApi();
 
         //     } ,
         //     errorToken => {

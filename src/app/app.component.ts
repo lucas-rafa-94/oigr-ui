@@ -7,11 +7,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  logado = 'S';
   getToken() {
     if (localStorage.getItem('currentToken') !== '') {
       console.log('entrou +++');
-      this.router.navigate(['/login']);
+      this.router.navigate([window.location.pathname]);
+    }else{
+        this.router.navigate(['/login']);
     }
+    console.log(localStorage);
+      // this.router.navigate([window.location.pathname]);
+      // console.log(window.location.pathname);
   }
   constructor(private router: Router) { this.getToken(); }
 
