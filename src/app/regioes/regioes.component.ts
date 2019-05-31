@@ -851,7 +851,7 @@ export class RegioesComponent implements OnInit {
         //         console.log(dataToken.access_token);
         //         this.access_token = dataToken.access_token;
         console.log(regiao);
-        if(regiao.status === 'Ativo'){
+
             regiao.status = 'Excluir';
             this.getService.updateRegiaoDelete(regiao, this.access_token).subscribe(
                 data => {
@@ -862,18 +862,9 @@ export class RegioesComponent implements OnInit {
                     console.log(error);
                     this.statusApi = 2;
                 })
-        }else {
-            this.getService.deleteRegiao(regiao.id, regiao.nome, this.access_token).subscribe(
-                data => {
-                    this.getRegioesApi();
-                    this.deleteClose();
-                },
-                error => {
-                    console.log(error);
-                    this.statusApi = 2;
-                }
-            );
-        }
+
+        this.getRegioesApi();
+
         //     } ,
         //     errorToken => {
         //         console.log(errorToken);
