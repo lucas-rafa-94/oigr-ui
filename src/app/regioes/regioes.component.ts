@@ -773,10 +773,11 @@ export class RegioesComponent implements OnInit {
                         this.showSpinner = false;
                         this.getRegioesApi();
                     },
-                    error => {
-                        this.statusApi = 2;
+                    error2 => {
+                        this.statusApi = 1;
+                        this.getRegioesApi();
                         this.showSpinner = false;
-                        console.log(error);
+                        console.log(error2);
                     }
                 );
                 // this.statusApi = 1;
@@ -784,7 +785,8 @@ export class RegioesComponent implements OnInit {
                 // this.getRegioesApi();
             },
             error => {
-                this.statusApi = 2;
+                this.statusApi = 1;
+                this.getRegioesApi();
                 this.showSpinner = false;
                 console.log(error);
             }
