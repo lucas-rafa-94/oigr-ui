@@ -5,7 +5,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EstadosDddService} from '../services/estadosDdd/estadosDdd.service';
 import {CidadeService} from '../services/cidade/cidade.service';
 import {ProdutoService} from '../services/produto/produto.service';
-import {TokenService} from '../services/token/token.service';
 
 @Component({
     selector: 'app-home',
@@ -19,7 +18,6 @@ export class RegioesComponent implements OnInit {
     listMissingCidades = [];
     access_token;
     buscaCidades;
-    tokenService;
     listDdds = [];
     listCidades = [];
     listEstados: any = [];
@@ -62,9 +60,8 @@ export class RegioesComponent implements OnInit {
             this.router.navigate(['']);
         }
     }
-    constructor(private router: Router, service: RegiaoUserService , assetsService: EstadosDddService, cidadeService: CidadeService, produtoService: ProdutoService, private modalService: NgbModal, tokenService: TokenService) {
+    constructor(private router: Router, service: RegiaoUserService , assetsService: EstadosDddService, cidadeService: CidadeService, produtoService: ProdutoService, private modalService: NgbModal) {
         this.getTokenSession();
-        this.tokenService = tokenService;
         this.getServiceProduto = produtoService;
         this.getService = service;
         this.helperService = assetsService;
@@ -178,10 +175,6 @@ export class RegioesComponent implements OnInit {
 
     getProdutosService() {
         this.produtos = [];
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.getServiceProduto.getProdutos(this.access_token).subscribe(
             data => {
                 if (data.status === 200) {
@@ -215,11 +208,6 @@ export class RegioesComponent implements OnInit {
             }
         );
     }
-    //         errorToken => {
-    //             console.log(errorToken);
-    //         }
-    //     );
-    // }
 
     onProdutoSelected(event){
         console.log(event);
@@ -252,10 +240,6 @@ export class RegioesComponent implements OnInit {
     }
 
     getDddsApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.helperService.getDdds(this.access_token).subscribe(
             data => {
                 for (var i = 0; i < data.length ; i++){
@@ -277,18 +261,9 @@ export class RegioesComponent implements OnInit {
             }
         );
     }
-    //         errorToken => {
-    //             console.log(errorToken);
-    //         }
-    //     );
-    // }
 
 
     getRegiaoMacroApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.helperService.getRegiaoMacro(this.access_token).subscribe(
             data => {
                 console.log(data);
@@ -311,11 +286,6 @@ export class RegioesComponent implements OnInit {
             }
         );
     }
-    //         errorToken => {
-    //             console.log(errorToken);
-    //         }
-    //     );
-    // }
 
     ufShown(){
         if(this.ufEscolhido) {
@@ -333,10 +303,6 @@ export class RegioesComponent implements OnInit {
     }
 
     getEstadosApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.helperService.getEstados(this.access_token).subscribe(
             data => {
                 console.log(data);
@@ -357,24 +323,14 @@ export class RegioesComponent implements OnInit {
                 }
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     onEstadoSelected(event) {
         console.log(event);
         this.getCidadesApi(event);
-        // this.listCidades = [];
     }
 
     getCidadesApi(estados) {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.showSpinner = true;
         console.log(estados)
         let ids = '';
@@ -402,11 +358,6 @@ export class RegioesComponent implements OnInit {
                 console.log(error);
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     regiaoMacroShown(){
@@ -574,10 +525,6 @@ export class RegioesComponent implements OnInit {
         );
     }
     getRegioesApiByDdd(regiao) {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.showSpinner = true;
         this.helperService.getDdds(this.access_token).subscribe(
             data => {
@@ -607,19 +554,10 @@ export class RegioesComponent implements OnInit {
                 console.log(error);
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
 
     getRegioesApiByRegiao(regiao) {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.showSpinner = true;
         this.helperService.getRegiaoMacro(this.access_token).subscribe(
             data => {
@@ -650,11 +588,6 @@ export class RegioesComponent implements OnInit {
                 console.log(error);
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
 
@@ -682,10 +615,6 @@ export class RegioesComponent implements OnInit {
 
 
     getRegioesApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
 
         this.getService.getRegioes(this.access_token).subscribe(
             data => {
@@ -717,11 +646,6 @@ export class RegioesComponent implements OnInit {
 
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     checkRegioes(regioes, id){
@@ -760,10 +684,6 @@ export class RegioesComponent implements OnInit {
             }
         }
         console.log(arrayPublicaRegioes);
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
             data => {
                 this.getService.createPublicaRegioes(arrayPublicaRegioes).subscribe(
@@ -780,9 +700,6 @@ export class RegioesComponent implements OnInit {
                         console.log(error2);
                     }
                 );
-                // this.statusApi = 1;
-                // this.showSpinner = false;
-                // this.getRegioesApi();
             },
             error => {
                 this.statusApi = 1;
@@ -791,11 +708,6 @@ export class RegioesComponent implements OnInit {
                 console.log(error);
             }
         );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     updateRegiaoAcao(regiao){
@@ -829,10 +741,6 @@ export class RegioesComponent implements OnInit {
 
         regiao.status = 'Rascunho';
 
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.getService.updateRegioes(regiao, this.access_token).subscribe(
             data => {
                 if (data.id === 200){
@@ -850,20 +758,10 @@ export class RegioesComponent implements OnInit {
                 this.statusApi = 2;
             }
         );
-        //         } ,
-        //         errorToken => {
-        //             console.log(errorToken);
-        //         }
-        //     );
-        // }
     }
 
 
     deleteRegiaoAcao(regiao){
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         console.log(regiao);
 
             regiao.status = 'Excluir';
@@ -876,14 +774,6 @@ export class RegioesComponent implements OnInit {
                     console.log(error);
                     this.statusApi = 2;
                 })
-
-        // this.getRegioesApi();
-
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     createRegiaoAcao(regiao){
@@ -914,10 +804,6 @@ export class RegioesComponent implements OnInit {
             regiao.listArt = regiaoMacro;
         }
         console.log(regiao);
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.getService.createRegioes(regiao, this.access_token).subscribe(
             data => {
                 if (data.id === 200){
@@ -935,12 +821,6 @@ export class RegioesComponent implements OnInit {
                 this.showSpinner = false;
             }
         );
-        //         } ,
-        //         errorToken => {
-        //             console.log(errorToken);
-        //         }
-        //     );
-        // }
     }
     submitSucesso() {
         if (this.statusApi === 1) {

@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CidadeService} from '../services/cidade/cidade.service';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {NgxPaginationModule} from 'ngx-pagination';
 import {EstadosDddService} from '../services/estadosDdd/estadosDdd.service';
-import {TokenService} from '../services/token/token.service';
-import {getToken} from 'codelyzer/angular/styles/cssLexer';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +11,6 @@ import {getToken} from 'codelyzer/angular/styles/cssLexer';
 export class CidadesComponent implements OnInit {
     getService;
     access_token;
-    tokenService;
     estadoSelecionado;
     showSpinner;
     dddSelecionado;
@@ -36,10 +31,9 @@ export class CidadesComponent implements OnInit {
             this.router.navigate(['']);
         }
     }
-  constructor(private router: Router, service: CidadeService, estadoService: EstadosDddService, tokenService: TokenService) {
+  constructor(private router: Router, service: CidadeService, estadoService: EstadosDddService) {
       this.getTokenSession();
       this.getService = service;
-      this.tokenService = tokenService;
       this.getCidades();
       this.getEstados = estadoService;
       this.visualizacaoOpen = true;
@@ -152,10 +146,6 @@ export class CidadesComponent implements OnInit {
     }
 
     getEstadosApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
                 this.getEstados.getEstados(this.access_token).subscribe(
                     data => {
                         console.log(data);
@@ -172,11 +162,6 @@ export class CidadesComponent implements OnInit {
                         }
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     onDddSelected(event){
@@ -184,10 +169,6 @@ export class CidadesComponent implements OnInit {
     }
 
     getDddsApi() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
                 this.getEstados.getDdds(this.access_token).subscribe(
                     data => {
                         console.log(data);
@@ -201,18 +182,9 @@ export class CidadesComponent implements OnInit {
                         }
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     getCidades() {
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.showSpinner = true;
 
                 this.getService.getCidades(this.access_token).subscribe(
@@ -235,18 +207,9 @@ export class CidadesComponent implements OnInit {
                         this.showSpinner = false;
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     updateCidadeAcao(cidade){
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
                 this.showSpinner = true;
                 this.getService.updateCidade(cidade, this.access_token).subscribe(
                     data => {
@@ -258,18 +221,9 @@ export class CidadesComponent implements OnInit {
                         this.statusApi = 2;
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
 
     createCidadeAcao(cidade){
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
         this.showSpinner = true;
                 this.getService.createCidade(cidade, this.access_token).subscribe(
                     data => {
@@ -282,17 +236,8 @@ export class CidadesComponent implements OnInit {
                         this.statusApi = 2;
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
     deleteCidadeAcao(cidade){
-        // this.tokenService.getToken().subscribe(
-        //     dataToken => {
-        //         console.log(dataToken.access_token);
-        //         this.access_token = dataToken.access_token;
                 this.getService.deleteCidade(cidade.id, this.access_token).subscribe(
                     data => {
                             this.deleteClose();
@@ -302,11 +247,6 @@ export class CidadesComponent implements OnInit {
                             this.statusApi = 2;
                     }
                 );
-        //     } ,
-        //     errorToken => {
-        //         console.log(errorToken);
-        //     }
-        // );
     }
     submitSucesso() {
         if (this.statusApi === 1) {

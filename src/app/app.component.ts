@@ -16,8 +16,6 @@ export class AppComponent {
         this.router.navigate(['/login']);
     }
     console.log(localStorage);
-      // this.router.navigate([window.location.pathname]);
-      // console.log(window.location.pathname);
   }
   constructor(private router: Router) { this.getToken(); }
 

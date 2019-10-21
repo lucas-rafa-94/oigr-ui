@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginInService} from '../services/loginIn/login-in.service';
 import {Router} from '@angular/router';
-import {TokenService} from '../services/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +10,14 @@ import {TokenService} from '../services/token/token.service';
 export class LoginComponent {
   private loginOn;
   access_token;
-  tokenService;
   name;
   getService;
   login = {
     email: '',
     senha: ''
   };
-  constructor(service: LoginInService, private  router: Router, tokenService: TokenService) {
+  constructor(service: LoginInService, private  router: Router) {
     this.name = service.getName();
-    this.tokenService = tokenService;
     this.getService = service;
     this.loginOn = false;
   }
